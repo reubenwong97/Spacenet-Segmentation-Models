@@ -61,4 +61,4 @@ def train_test_model(hparams):
   _, accuracy = model.evaluate(x_test, y_test)
   return accuracy
 ```
-For more details on tensorboard please see [here](https://www.tensorflow.org/tensorboard/hyperparameter_tuning_with_hparams)
+For more details on tensorboard please see [here](https://www.tensorflow.org/tensorboard/hyperparameter_tuning_with_hparams).
