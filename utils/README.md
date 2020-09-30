@@ -63,6 +63,13 @@ parameters:
   optimizer:
     values: ["adam", "sgd"]
 ```
+**Note:** This section is important in the configuration if we don't use argparsers:
+```yaml
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+```
 There's a whole bunch of available configurations [here](https://docs.wandb.com/sweeps/configuration)!
 ### Tensorboard (Outdated) - Funky Logging
 As much as possible should be logged when conducting experiments. We should probably only need to do this within a `main.py` file but we shall see. See some quick steps for logging below:
