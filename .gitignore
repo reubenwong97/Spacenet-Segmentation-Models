@@ -1,3 +1,13 @@
+# Project specific
+data/*
+models/*
+tensorboard/*
+
+# Preserve folder structure
+!data/.gitkeep
+!models/.gitkeep
+!tensorboard/.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
