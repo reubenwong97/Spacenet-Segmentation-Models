@@ -1,10 +1,12 @@
 # Project specific
-data/*
+data_full/*
+data_project/*
 models/*
 tensorboard/*
 
 # Preserve folder structure
-!data/.gitkeep
+!data_full/.gitkeep
+!data_project/.gitkeep
 !models/.gitkeep
 !tensorboard/.gitkeep
 
