@@ -1,8 +1,0 @@
-include *.txt
-include *.md
-recursive-include sample_data *
-include sample_data/*
-include sample_data/*.geojson
-include sample_data/*.csv
-include sample_data/*.png
-include sample_data/*.gpickle
