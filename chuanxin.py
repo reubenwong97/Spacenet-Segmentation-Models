@@ -12,6 +12,10 @@ sm.set_framework(SM_FRAMEWORK)
 BACKBONE = 'resnet34'
 preprocess_input = sm.get_preprocessing(BACKBONE)
 
+import wandb
+wand.init(project='spacenet_6_trial_run')
+
+
 # load your data
 # this is a 5GB numpy array with all our data
 print("loading data")
@@ -44,5 +48,5 @@ model.fit(
    batch_size=32,
    epochs=100,
    validation_split=0.2,
-   callbacks=[TQDMCallback()]
+   callbacks=[TQDMCallback(), wandb.WandbCallback(log_weights=True)]
 )
