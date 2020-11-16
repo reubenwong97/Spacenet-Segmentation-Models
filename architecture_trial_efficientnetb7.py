@@ -25,9 +25,9 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet50'
-wandb.init(project='architecture_trial_resnet50')
-model_name = 'architecture_trial_resnet50'
+BACKBONE = 'efficientnetb7'
+wandb.init(project='architecture_trial_efficientnetb7')
+model_name = 'architecture_trial_efficientnetb7'
 
 
 
