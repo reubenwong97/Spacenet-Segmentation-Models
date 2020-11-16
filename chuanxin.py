@@ -25,7 +25,7 @@ X_test = preprocess_input(X_test)
 print("finished preprocessing input")
 
 # input subset of data only
-X_train, Y_train, X_test, Y_test = X_train[:100], Y_train[:100], X_test[:100], Y_test[:100]
+# X_train, Y_train, X_test, Y_test = X_train[:100], Y_train[:100], X_test[:100], Y_test[:100]
 
 # define model
 model = sm.Unet(BACKBONE, encoder_weights='imagenet')
