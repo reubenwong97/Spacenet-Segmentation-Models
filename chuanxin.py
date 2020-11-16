@@ -22,6 +22,11 @@ print("loading data")
 X_train, Y_train, X_test, Y_test = helper.generate_train_test()
 print("X_train, Y_train, X_test, Y_test loaded")
 
+print(X_train.shape, X_train.dtype)
+print(X_test.shape, X_test.dtype)
+print(Y_train.shape, Y_train.dtype)
+print(Y_test.shape, Y_test.dtype)
+
 # preprocess input
 print("preprocessing input")
 X_train = preprocess_input(X_train)
@@ -30,7 +35,10 @@ Y_train = tf.dtypes.cast(Y_train, tf.float32)
 Y_test = tf.dtypes.cast(Y_test, tf.float32)
 print("finished preprocessing input")
 
-print(X_train.shape)
+print(X_train.shape, X_train.dtype)
+print(X_test.shape, X_test.dtype)
+print(Y_train.shape, Y_train.dtype)
+print(Y_test.shape, Y_test.dtype)
 
 # input subset of data only
 # X_train, Y_train, X_test, Y_test = X_train[:100], Y_train[:100], X_test[:100], Y_test[:100]
