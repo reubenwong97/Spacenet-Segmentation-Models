@@ -3,19 +3,33 @@ from tensorflow import keras
 import utils.helper as helper
 from keras_tqdm import TQDMCallback
 
+import os
+os.environ['SM_FRAMEWORK'] = 'keras'
+SM_FRAMEWORK = os.getenv('SM_FRAMEWORK')
+
 import segmentation_models as sm
-
-
+sm.set_framework(SM_FRAMEWORK)
 BACKBONE = 'resnet34'
 preprocess_input = sm.get_preprocessing(BACKBONE)
 
+import wandb
+wand.init(project='spacenet_6_trial_run')
+
+
 # load your data
 # this is a 5GB numpy array with all our data
+print("loading data")
 X_train, Y_train, X_test, Y_test = helper.generate_train_test()
+print("X_train, Y_train, X_test, Y_test loaded")
 
 # preprocess input
-x_train = preprocess_input(x_train)
-x_val = preprocess_input(x_val)
+print("preprocessing input")
+X_train = preprocess_input(X_train)
+X_test = preprocess_input(X_test)
+print("finished preprocessing input")
+
+# input subset of data only
+# X_train, Y_train, X_test, Y_test = X_train[:100], Y_train[:100], X_test[:100], Y_test[:100]
 
 # define model
 model = sm.Unet(BACKBONE, encoder_weights='imagenet')
@@ -34,5 +48,5 @@ model.fit(
    batch_size=32,
    epochs=100,
    validation_split=0.2,
-   callbacks=[TQDMCallback()]
+   callbacks=[TQDMCallback(), wandb.WandbCallback(log_weights=True)]
 )
