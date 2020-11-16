@@ -24,8 +24,8 @@ print("X_train, Y_train, X_test, Y_test loaded")
 
 # preprocess input
 print("preprocessing input")
-Y_train = tf.dtypes.cast(Y_train, tf.uint8)
-Y_test = tf.dtypes.cast(Y_test, tf.uint8)
+Y_train = tf.dtypes.cast(Y_train, tf.float32)
+Y_test = tf.dtypes.cast(Y_test, tf.float32)
 X_train = preprocess_input(X_train)
 X_test = preprocess_input(X_test)
 print("finished preprocessing input")
