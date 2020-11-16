@@ -28,8 +28,10 @@ print("preprocessing input")
 X_train = preprocess_input(X_train)
 X_test = preprocess_input(X_test)
 
-for data in [X_train, X_test, Y_train, Y_test]:
-    data = tf.dtypes.cast(data, tf.float32)
+X_train = tf.dtype.cast(X_train, tf.float32)
+X_test = tf.dtype.cast(X_test, tf.float32)
+Y_train = tf.dtype.cast(Y_train, tf.float32)
+Y_test = tf.dtype.cast(Y_test, tf.float32)
 print("finished preprocessing input")
 
 
