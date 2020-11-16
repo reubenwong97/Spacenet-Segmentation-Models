@@ -86,8 +86,8 @@ def generate_train_test():
     for index, path in tqdm(enumerate(paths), total=len(paths)):
         fnames = get_fnames(path)
         
-        for fname in tqdm(fnames[:32], total=len(fnames[:32])):
-        # for fname in tqdm(fnames, total=len(fnames)):
+        # for fname in tqdm(fnames[:32], total=len(fnames[:32])):
+        for fname in tqdm(fnames, total=len(fnames)):
             npy = rebuild_npy(path / fname)
             data[index].append(npy)
 
