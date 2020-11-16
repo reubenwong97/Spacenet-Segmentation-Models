@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 import os
 import numpy as np
 from tqdm import tqdm
-
+import numpy as np
 
 '''
 # used to generate the PosixPath variables for various common paths
@@ -23,9 +23,53 @@ def data_paths():
     PATH_TRAIN_IMG = PATH_TRAIN/'img'
     PATH_TRAIN_MASK = PATH_TRAIN/'mask'
     PATH_TEST_IMG = PATH_TEST/'img'
-    PATH_TEST_MASK = PATH_TEST / 'mask'
-    
+    PATH_TEST_MASK = PATH_TEST /'mask'
+
     return PATH_TRAIN_IMG, PATH_TRAIN_MASK, PATH_TEST_IMG, PATH_TEST_MASK
+
+
+'''
+used to generate the PosixPath variables for the results to save
+'''
+def results_paths():
+    ROOT_DIR = Path('')
+    PATH_RESULTS = ROOT_DIR /'results'
+    PATH_HISTORIES = PATH_RESULTS / 'histories'
+    PATH_FIGURES = PATH_RESULTS / 'figures'
+    PATH_CHECKPOINTS = PATH_RESULTS / 'checkpoints'
+
+    return PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS
+
+
+''' 
+used to save the history of a model as a npy file
+'''
+# filename like 'history/model_name.npy'
+def history_saver(history, model_name, history_save_path, already_npy=False):
+  history_json = {}
+
+  if already_npy:
+    history_npy = history
+
+  else:
+    history_npy = history.history
+
+  np.save(history_save_path/model_name, history_npy)
+  print("History saved")
+
+
+
+''' 
+used to load the history of a model from a npy file
+'''
+# filename like 'history/model_name.npy'
+def history_loader(model_name, history_save_path):
+  history_save_path = history_save_path/str(model_name+'.npy')
+  history=np.load(history_save_path,allow_pickle='TRUE').item()
+  print('History loaded')
+  
+  return history 
+
 
 
 '''
@@ -94,4 +138,6 @@ def generate_train_test():
         data[index] = np.array(data[index])
     
     X_train, Y_train, X_test, Y_test = data[0], data[1], data[2], data[3]
+    
     return (X_train, Y_train, X_test, Y_test)
+

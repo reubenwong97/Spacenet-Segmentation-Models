@@ -1,8 +1,13 @@
 
+'''
+imports and global
+'''
+import utils.helper as helper
+
 import tensorflow as tf
 from tensorflow import keras
-import utils.helper as helper
 from keras_tqdm import TQDMCallback
+from keras.callbacks import ModelCheckpoint
 
 import os
 os.environ['SM_FRAMEWORK'] = 'tf.keras'
@@ -14,16 +19,26 @@ BACKBONE = 'resnet50'
 preprocess_input = sm.get_preprocessing(BACKBONE)
 
 import wandb
+from wandb.keras import WandbCallback
 wandb.init(project='spacenet_6_trial_run')
 
 
-# load your data
-# this is a 5GB numpy array with all our data
+
+
+
+'''
+load your data. this is a 5GB numpy array with all our data
+'''
 print("loading data")
+PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS = helper.results_paths()
 X_train, Y_train, X_test, Y_test = helper.generate_train_test()
 print("X_train, Y_train, X_test, Y_test loaded")
 
-# preprocess input
+
+
+'''
+preprocess input to ensure it fits the model definition
+'''
 print("preprocessing input")
 X_train = preprocess_input(X_train)
 X_test = preprocess_input(X_test)
@@ -35,16 +50,14 @@ Y_test = tf.dtypes.cast(Y_test, tf.dtypes.float32)
 print("finished preprocessing input")
 
 
-print(X_train.dtype)
-print(X_test.dtype)
-print(Y_train.dtype)
-print(Y_test.dtype)
-
-
 # input subset of data only
 # X_train, Y_train, X_test, Y_test = X_train[:100], Y_train[:100], X_test[:100], Y_test[:100]
 
-# define model
+
+
+'''
+define the model - make sure to set model name
+'''
 model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3))
 model.compile(
     optimizer='adam',
@@ -52,14 +65,34 @@ model.compile(
     metrics=[sm.metrics.IOUScore()],
 )
 
-# fit model
-# if you use data generator use model.fit_generator(...) instead of model.fit(...)
-# more about `fit_generator` here: https://keras.io/models/sequential/#fit_generator
-model.fit(
+model_name = 'spacenet_6_trial_run'
+
+
+
+'''
+fit model - save best weights at each epoch
+if you use data generator use model.fit_generator(...) instead of model.fit(...)
+more about `fit_generator` here: https://keras.io/models/sequential/#fit_generator
+'''
+CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5')), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto', period=1)
+
+history = model.fit(
    x=X_train,
    y=Y_train,
-   batch_size=32,
-   epochs=1000,
+   batch_size=64,
+   epochs=10000,
    validation_split=0.3,
-   callbacks=[TQDMCallback()]
+   callbacks=[
+       TQDMCallback(),
+       WandbCallback(log_weights=True),
+       CheckpointCallback
+       ]
 )
+
+
+
+'''
+save the results and load 
+'''
+helper.history_saver(history, model_name, PATH_HISTORIES, already_npy=False)
+history = helper.history_loader(model_name, PATH_HISTORIES)

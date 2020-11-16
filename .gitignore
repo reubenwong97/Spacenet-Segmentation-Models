@@ -1,6 +1,7 @@
 # Project specific
 data_all/*
 data_project/*
+wandb/*
 models/*
 tensorboard/*
 
