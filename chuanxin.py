@@ -41,25 +41,25 @@ print(Y_train.dtype)
 print(Y_test.dtype)
 
 
-# # input subset of data only
-# # X_train, Y_train, X_test, Y_test = X_train[:100], Y_train[:100], X_test[:100], Y_test[:100]
+# input subset of data only
+# X_train, Y_train, X_test, Y_test = X_train[:100], Y_train[:100], X_test[:100], Y_test[:100]
 
-# # define model
-# model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3))
-# model.compile(
-#     optimizer='adam',
-#     loss=sm.losses.BinaryFocalLoss(alpha=0.75, gamma=0.25),
-#     metrics=[sm.metrics.IOUScore()],
-# )
+# define model
+model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3))
+model.compile(
+    optimizer='adam',
+    loss=sm.losses.BinaryFocalLoss(alpha=0.75, gamma=0.25),
+    metrics=[sm.metrics.IOUScore()],
+)
 
-# # fit model
-# # if you use data generator use model.fit_generator(...) instead of model.fit(...)
-# # more about `fit_generator` here: https://keras.io/models/sequential/#fit_generator
-# model.fit(
-#    x=X_train,
-#    y=Y_train,
-#    batch_size=32,
-#    epochs=1000,
-#    validation_split=0.3,
-#    callbacks=[TQDMCallback()]
-# )
+# fit model
+# if you use data generator use model.fit_generator(...) instead of model.fit(...)
+# more about `fit_generator` here: https://keras.io/models/sequential/#fit_generator
+model.fit(
+   x=X_train,
+   y=Y_train,
+   batch_size=32,
+   epochs=1000,
+   validation_split=0.3,
+   callbacks=[TQDMCallback()]
+)
