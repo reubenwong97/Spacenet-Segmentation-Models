@@ -1,10 +1,9 @@
 
 from tensorflow import keras
 import utils.helper as helper
-from keras_tqdm import TQDMCallback
 
 import os
-os.environ['SM_FRAMEWORK'] = 'keras'
+os.environ['SM_FRAMEWORK'] = 'tf.keras'
 SM_FRAMEWORK = os.getenv('SM_FRAMEWORK')
 
 import segmentation_models as sm
@@ -47,6 +46,5 @@ model.fit(
    y=Y_train,
    batch_size=32,
    epochs=100,
-   validation_split=0.2,
-   callbacks=[TQDMCallback(), wandb.WandbCallback(log_weights=True)]
+   validation_split=0.2
 )
