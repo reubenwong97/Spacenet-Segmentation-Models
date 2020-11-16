@@ -50,10 +50,6 @@ Y_test = tf.dtypes.cast(Y_test, tf.dtypes.float32)
 print("finished preprocessing input")
 
 
-# input subset of data only
-# X_train, Y_train, X_test, Y_test = X_train[:100], Y_train[:100], X_test[:100], Y_test[:100]
-
-
 
 '''
 define the model - make sure to set model name
@@ -65,7 +61,7 @@ model.compile(
     metrics=[sm.metrics.IOUScore()],
 )
 
-model_name = 'spacenet_6_trial_run'
+model_name = 'architecture_trial_resnet50'
 
 
 
@@ -80,7 +76,7 @@ history = model.fit(
    x=X_train,
    y=Y_train,
    batch_size=64,
-   epochs=10000,
+   epochs=100,
    validation_split=0.3,
    callbacks=[
        TQDMCallback(),
