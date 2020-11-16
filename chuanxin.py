@@ -12,7 +12,7 @@ BACKBONE = 'resnet34'
 preprocess_input = sm.get_preprocessing(BACKBONE)
 
 import wandb
-wand.init(project='spacenet_6_trial_run')
+wandb.init(project='spacenet_6_trial_run')
 
 
 # load your data
