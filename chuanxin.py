@@ -31,9 +31,9 @@ print("finished preprocessing input")
 # X_train, Y_train, X_test, Y_test = X_train[:100], Y_train[:100], X_test[:100], Y_test[:100]
 
 # define model
-model = sm.Unet(BACKBONE, encoder_weights='imagenet')
+model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3))
 model.compile(
-    'Adam',
+    optimizer='Adam',
     loss=sm.losses.bce_jaccard_loss,
     metrics=[sm.metrics.iou_score],
 )
