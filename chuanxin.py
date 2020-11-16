@@ -49,7 +49,7 @@ model.fit(
    x=X_train,
    y=Y_train,
    batch_size=32,
-   epochs=10000,
-   validation_split=0.2,
+   epochs=1000,
+   validation_split=0.3,
    callbacks=[TQDMCallback()]
 )
