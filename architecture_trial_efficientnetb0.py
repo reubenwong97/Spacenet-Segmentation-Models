@@ -78,7 +78,7 @@ CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5
 history = model.fit(
    x=X_train,
    y=Y_train,
-   batch_size=64,
+   batch_size=32,
    epochs=100,
    validation_split=0.3,
    callbacks=[
@@ -106,7 +106,7 @@ model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 #     ]
 # )
 
-test_metrics = model.evaluate(X_test, Y_test, batch_size=64)
+test_metrics = model.evaluate(X_test, Y_test, batch_size=32)
 
 test_metrics_dict = {
     'test_loss': test_metrics[0],
