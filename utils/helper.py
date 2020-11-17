@@ -76,7 +76,7 @@ def history_loader(model_name, history_save_path):
 used to plot the image, and the mask side by side, and also the prediction, if any
 index: int, img: np.ndarray, mask: np.ndarray, pred: np.ndarray
 '''
-def plot_img_mask(index, img, mask, pred=None):    
+def plot_img_mask(index, img, mask, pred=None):
     if pred == None:
         fig, (ax1, ax2) = plt.subplots(1,2, figsize=(14,7))
         ax1.imshow(img)
@@ -109,15 +109,15 @@ def rebuild_npy(npy_path, img_height=224, img_width=224):
     img_npy = np.load(npy_path)
     img_channel = int(len(img_npy)/img_height/img_width)
     
-    # if img_channel == 1:
-    #     return img_npy.reshape(img_height, img_width)
-    # elif img_channel == 3:
-    #     return img_npy.reshape(img_height, img_width, img_channel)
-    # else:
-    #     print("cannot rebuild numpy array")
-    #     return
+    if img_channel == 1:
+         return img_npy.reshape(img_height, img_width)
+    elif img_channel == 3:
+        return img_npy.reshape(img_height, img_width, img_channel)
+    else:
+        print("cannot rebuild numpy array")
+        return
             
-    return img_npy.reshape(img_height, img_width, img_channel)
+    #return img_npy.reshape(img_height, img_width, img_channel)
 
 
 '''
@@ -140,4 +140,3 @@ def generate_train_test():
     X_train, Y_train, X_test, Y_test = data[0], data[1], data[2], data[3]
     
     return (X_train, Y_train, X_test, Y_test)
-
