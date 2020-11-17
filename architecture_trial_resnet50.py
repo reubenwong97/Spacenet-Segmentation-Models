@@ -101,7 +101,7 @@ predictions = model.predict(
     ]
 )
 
-test_metrics = model.evaluate(X_test, Y_test, batch_size=64)
+test_metrics = model.evaluate(X_test, Y_test, batch_size=128)
 
 test_metrics_dict = {
     'test_loss': test_metrics[0],
