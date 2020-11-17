@@ -1,8 +1,8 @@
 import numpy as np
 import tensorflow as tf
 import tensorflow.keras as keras
-import utils.helper as helper
-from utils.helper import rebuild_npy
+
+from .helper import rebuild_npy
 
 class DataGenerator(keras.utils.Sequence):
     def __init__(self, img_fname_list, mask_fname_list, img_path, mask_path, batch_size=64, shuffle=True):
