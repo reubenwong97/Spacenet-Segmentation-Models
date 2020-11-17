@@ -95,3 +95,4 @@ save the results and load
 '''
 helper.history_saver(history, model_name, PATH_HISTORIES, already_npy=False)
 history = helper.history_loader(model_name, PATH_HISTORIES)
+helper.plot_metrics(history, model_name, PATH_FIGURES)
