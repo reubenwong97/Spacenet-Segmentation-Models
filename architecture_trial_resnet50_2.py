@@ -3,7 +3,6 @@
 imports and global
 '''
 import utils.helper as helper
-from utils.datagen import DataGenerator
 
 import tensorflow as tf
 from tensorflow import keras
@@ -27,8 +26,8 @@ GLOBAL - CHANGE HERE
 ''' 
 
 BACKBONE = 'resnet50'
-wandb.init(project='architecture_trial_resnet50')
-model_name = 'architecture_trial_resnet50'
+wandb.init(project='architecture_trial_resnet50_2')
+model_name = 'architecture_trial_resnet50_2'
 
 
 
@@ -39,26 +38,8 @@ load your data. this is a 5GB numpy array with all our data
 '''
 print("loading data")
 PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS = helper.results_paths()
-# X_train, Y_train, X_test, Y_test = helper.generate_train_test()
-# print("X_train, Y_train, X_test, Y_test loaded")
 
-training_generator = DataGenerator()
-testing_generator = DataGenerator(train=False)
-
-'''
-preprocess input to ensure it fits the model definition
-'''
-print("preprocessing input")
-preprocess_input = sm.get_preprocessing(BACKBONE)
-
-# X_train = preprocess_input(X_train)
-# X_test = preprocess_input(X_test)
-
-X_train = tf.dtypes.cast(X_train, tf.dtypes.float32)
-X_test = tf.dtypes.cast(X_test, tf.dtypes.float32)
-Y_train = tf.dtypes.cast(Y_train, tf.dtypes.float32)
-Y_test = tf.dtypes.cast(Y_test, tf.dtypes.float32)
-print("finished preprocessing input")
+training_generator, val_generator, test_generator = helper.generate_train_val_test()
 
 
 '''
@@ -79,12 +60,10 @@ more about `fit_generator` here: https://keras.io/models/sequential/#fit_generat
 '''
 CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5')), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto', period=1)
 
-history = model.fit(
-   x=X_train,
-   y=Y_train,
-   batch_size=64,
+history = model.fit_generator(
+   generator=training_generator,
+   validation_data=val_generator,
    epochs=100,
-   validation_split=0.3,
    callbacks=[
        TQDMCallback(),
        WandbCallback(log_weights=True),
