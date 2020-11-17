@@ -88,11 +88,16 @@ history = model.fit(
        ]
 )
 
+helper.history_saver(history, model_name, PATH_HISTORIES, already_npy=False)
+history = helper.history_loader(model_name, PATH_HISTORIES)
+helper.plot_metrics(history, model_name, PATH_FIGURES)
 
 
 '''
-predict on the test set
+predict on the test set. load best weights from checkpoints
 '''
+model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
+
 predictions = model.predict(
     X_test,
     verbose=1,
@@ -107,14 +112,6 @@ test_metrics_dict = {
     'test_loss': test_metrics[0],
     'test_iou_score': test_metrics[1]
 }
-
-
-'''
-save the results and load 
-'''
-helper.history_saver(history, model_name, PATH_HISTORIES, already_npy=False)
-history = helper.history_loader(model_name, PATH_HISTORIES)
-helper.plot_metrics(history, model_name, PATH_FIGURES)
 
 np.save(PATH_PREDICTIONS / model_name, predictions)
 np.save(PATH_PREDICTIONS/str(model_name + "_prediction_score"), test_metrics_dict)
