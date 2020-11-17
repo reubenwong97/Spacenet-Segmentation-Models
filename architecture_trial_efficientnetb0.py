@@ -98,13 +98,13 @@ predict on the test set. load best weights from checkpoints
 '''
 model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 
-predictions = model.predict(
-    X_test,
-    verbose=1,
-    callbacks=[
-        TQDMCallback()
-    ]
-)
+# predictions = model.predict(
+#     X_test,
+#     verbose=1,
+#     callbacks=[
+#         TQDMCallback()
+#     ]
+# )
 
 test_metrics = model.evaluate(X_test, Y_test, batch_size=64)
 
@@ -113,5 +113,5 @@ test_metrics_dict = {
     'test_iou_score': test_metrics[1]
 }
 
-np.save(PATH_PREDICTIONS / model_name, predictions)
+# np.save(PATH_PREDICTIONS / model_name, predictions)
 np.save(PATH_PREDICTIONS/str(model_name + "_prediction_score"), test_metrics_dict)
