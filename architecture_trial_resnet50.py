@@ -3,12 +3,13 @@
 imports and global
 '''
 import utils.helper as helper
+from utils.datagen import DatasetFromSequenceClass
 import numpy as np
 
 import tensorflow as tf
 from tensorflow import keras
 from keras_tqdm import TQDMCallback
-from keras.callbacks import ModelCheckpoint
+from tensorflow.keras.callbacks import ModelCheckpoint
 
 import os
 os.environ['SM_FRAMEWORK'] = 'tf.keras'
@@ -32,8 +33,6 @@ model_name = 'architecture_trial_resnet50'
 
 
 
-
-
 '''
 Creating train, val, test generators
 '''
@@ -43,6 +42,8 @@ PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS =
 train_generator, val_generator, test_generator = helper.generate_train_val_test()
 print("Generators created")
 
+training = DatasetFromSequenceClass(train_generator, 104)
+val_set = DatasetFromSequenceClass(val_generator, 44)
 
 '''
 define the model - make sure to set model name
@@ -63,16 +64,14 @@ more about `fit_generator` here: https://keras.io/models/sequential/#fit_generat
 CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5')), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto', period=1)
 
 history = model.fit(
-   train_generator,
-   validation_data=val_generator,
+   training,
+   validation_data=val_set,
    epochs=100,
    callbacks=[
-       TQDMCallback(),
        WandbCallback(log_weights=True),
        CheckpointCallback
        ],
     workers=16, 
-    use_multiprocessing=True
 )
 
 predictions = model.predict(
