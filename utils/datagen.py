@@ -3,7 +3,7 @@ import tensorflow as tf
 import tensorflow.keras as keras
 
 class DataGenerator(keras.utils.Sequence):
-    def __init__(self, img_fname_list, mask_fname_list, img_path, mask_path, rebuild_func, batch_size=64, shuffle=True, test_gen=False):
+    def __init__(self, img_fname_list, mask_fname_list, img_path, mask_path, rebuild_func, batch_size=128, shuffle=True, test_gen=False):
         self.batch_size = batch_size
         self.shuffle = shuffle
         self.img_fname_list = img_fname_list

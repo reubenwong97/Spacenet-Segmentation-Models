@@ -70,7 +70,9 @@ history = model.fit(
        TQDMCallback(),
        WandbCallback(log_weights=True),
        CheckpointCallback
-       ]
+       ],
+    workers=16, 
+    use_multiprocessing=True
 )
 
 predictions = model.predict(
