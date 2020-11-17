@@ -91,6 +91,43 @@ def plot_img_mask(index, img, mask, pred=None):
     plt.show()
 
 
+'''
+used to plot the metrics for a given history
+'''
+def plot_metrics(history, model_name, figure_save_path):
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+
+    # plot losses
+    train_loss = history['loss']
+    val_loss = history['val_loss']
+    loss_title = 'loss against epochs'
+
+    ax1.plot(train_loss, label='train')
+    ax1.plot(val_loss, label='val')
+    ax1.set_title(loss_title)
+    ax1.set_ylabel('loss')
+    ax1.set_xlabel('epochs')
+    ax1.legend()
+
+    # plot iou_score
+    iou_score = history['iou_score']
+    val_iou_score = history['val_iou_score']
+    iou_score_title = 'iou_score against epochs'
+
+    ax2.plot(iou_score, label='train')
+    ax2.plot(val_iou_score, label='val')
+    ax2.set_title(iou_score_title)
+    ax2.set_ylabel('iou_score')
+    ax2.set_xlabel('epochs')
+    ax2.legend()
+
+    # save figure
+    fig.suptitle('Metrics for model: ' + model_name)
+    plt.savefig(figure_save_path/f'{model_name}_metrics.png')
+
+    plt.show()
+
+
 '''    
 used to obtain all the filenames in a given directory as a list
 path: PosixPath
