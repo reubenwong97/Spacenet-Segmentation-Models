@@ -80,12 +80,17 @@ def plot_img_mask(index, img, mask, pred=None):
     if pred == None:
         fig, (ax1, ax2) = plt.subplots(1,2, figsize=(14,7))
         ax1.imshow(img)
+        ax1.set_title('image')
         ax2.imshow(mask)
+        ax2.set_title('ground truth mask')
     else:
         fig, (ax1, ax2, ax3) = plt.subplots(1,3, figsize=(21,7))
         ax1.imshow(img)
+        ax1.set_title('image')
         ax2.imshow(mask)
+        ax2.set_title('ground truth mask')
         ax3.imshow(pred)
+        ax3.set_title('predicted mask')
     
     print("Index: {}".format(index))
     plt.show()
