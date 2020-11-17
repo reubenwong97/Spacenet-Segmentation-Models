@@ -38,8 +38,9 @@ def results_paths():
     PATH_HISTORIES = PATH_RESULTS / 'histories'
     PATH_FIGURES = PATH_RESULTS / 'figures'
     PATH_CHECKPOINTS = PATH_RESULTS / 'checkpoints'
+    PATH_PREDICTIONS = PATH_RESULTS / 'predictions'
 
-    return PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS
+    return PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS
 
 
 ''' 
@@ -181,16 +182,23 @@ used to generate X_train, Y_train, X_test, Y_test as numpy arrays, from their .n
 
 def generate_train_val_test(val_percent=0.7):
     PATH_TRAIN_IMG, PATH_TRAIN_MASK, PATH_TEST_IMG, PATH_TEST_MASK = data_paths()
+
     val_split = int(len(get_fnames(PATH_TRAIN_IMG))*val_percent)
-    X_train_fnames = get_fnames(PATH_TRAIN_IMG[:val_split])
-    Y_train_fnames = get_fnames(PATH_TRAIN_MASK[:val_split])
-    X_val_fnames = get_fnames(PATH_TRAIN_IMG[val_split:])
-    Y_val_fnames = get_fnames(PATH_TRAIN_MASK[val_split:])
+    X_train_fnames = get_fnames(PATH_TRAIN_IMG)[:val_split]
+    Y_train_fnames = get_fnames(PATH_TRAIN_MASK)[:val_split]
+    X_val_fnames = get_fnames(PATH_TRAIN_IMG)[val_split:]
+    Y_val_fnames = get_fnames(PATH_TRAIN_MASK)[val_split:]
     X_test_fnames = get_fnames(PATH_TEST_IMG)
     Y_test_fnames = get_fnames(PATH_TEST_MASK)
 
-    training_generator = DataGenerator(X_train_fnames, Y_train_fnames, PATH_TRAIN_IMG, PATH_TRAIN_MASK, rebuild_func=rebuild_npy)
+    train_generator = DataGenerator(X_train_fnames, Y_train_fnames, PATH_TRAIN_IMG, PATH_TRAIN_MASK, rebuild_func=rebuild_npy)
     val_generator = DataGenerator(X_val_fnames, Y_val_fnames, PATH_TRAIN_IMG, PATH_TRAIN_MASK, rebuild_func=rebuild_npy)
     test_generator = DataGenerator(X_test_fnames, Y_test_fnames, PATH_TEST_IMG, PATH_TEST_MASK, rebuild_func=rebuild_npy)
 
-    return training_generator, val_generator, test_generator
+    
+    # train_generator = DataGenerator(X_train_fnames[:64], Y_train_fnames[:64], PATH_TRAIN_IMG, PATH_TRAIN_MASK, rebuild_func=rebuild_npy)
+    # val_generator = DataGenerator(X_val_fnames[:64], Y_val_fnames[:64], PATH_TRAIN_IMG, PATH_TRAIN_MASK, rebuild_func=rebuild_npy)
+    # test_generator = DataGenerator(X_test_fnames[:64], Y_test_fnames[:64], PATH_TEST_IMG, PATH_TEST_MASK, rebuild_func=rebuild_npy, test_gen=True)
+
+
+    return train_generator, val_generator, test_generator
