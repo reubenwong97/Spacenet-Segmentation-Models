@@ -3,6 +3,7 @@
 imports and global
 '''
 import utils.helper as helper
+from utils.datagen import DataGenerator
 
 import tensorflow as tf
 from tensorflow import keras
@@ -38,9 +39,11 @@ load your data. this is a 5GB numpy array with all our data
 '''
 print("loading data")
 PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS = helper.results_paths()
-X_train, Y_train, X_test, Y_test = helper.generate_train_test()
-print("X_train, Y_train, X_test, Y_test loaded")
+# X_train, Y_train, X_test, Y_test = helper.generate_train_test()
+# print("X_train, Y_train, X_test, Y_test loaded")
 
+training_generator = DataGenerator()
+testing_generator = DataGenerator(train=False)
 
 '''
 preprocess input to ensure it fits the model definition
@@ -48,8 +51,8 @@ preprocess input to ensure it fits the model definition
 print("preprocessing input")
 preprocess_input = sm.get_preprocessing(BACKBONE)
 
-X_train = preprocess_input(X_train)
-X_test = preprocess_input(X_test)
+# X_train = preprocess_input(X_train)
+# X_test = preprocess_input(X_test)
 
 X_train = tf.dtypes.cast(X_train, tf.dtypes.float32)
 X_test = tf.dtypes.cast(X_test, tf.dtypes.float32)
