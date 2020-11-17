@@ -78,7 +78,7 @@ def history_loader(model_name, history_save_path):
 used to plot the image, and the mask side by side, and also the prediction, if any
 index: int, img: np.ndarray, mask: np.ndarray, pred: np.ndarray
 '''
-def plot_img_mask(index, img, mask, pred=None):    
+def plot_img_mask(index, img, mask, pred=None):
     if pred == None:
         fig, (ax1, ax2) = plt.subplots(1,2, figsize=(14,7))
         ax1.imshow(img)
