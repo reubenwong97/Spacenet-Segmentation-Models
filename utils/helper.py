@@ -189,8 +189,8 @@ def generate_train_val_test(val_percent=0.7):
     X_test_fnames = get_fnames(PATH_TEST_IMG)
     Y_test_fnames = get_fnames(PATH_TEST_MASK)
 
-    training_generator = DataGenerator(X_train_fnames, Y_train_fnames, PATH_TRAIN_IMG, PATH_TRAIN_MASK)
-    val_generator = DataGenerator(X_val_fnames, Y_val_fnames, PATH_TRAIN_IMG, PATH_TRAIN_MASK)
-    test_generator = DataGenerator(X_test_fnames, Y_test_fnames, PATH_TEST_IMG, PATH_TEST_MASK)
+    training_generator = DataGenerator(X_train_fnames, Y_train_fnames, PATH_TRAIN_IMG, PATH_TRAIN_MASK, rebuild_func=rebuild_npy)
+    val_generator = DataGenerator(X_val_fnames, Y_val_fnames, PATH_TRAIN_IMG, PATH_TRAIN_MASK, rebuild_func=rebuild_npy)
+    test_generator = DataGenerator(X_test_fnames, Y_test_fnames, PATH_TEST_IMG, PATH_TEST_MASK, rebuild_func=rebuild_npy)
 
     return training_generator, val_generator, test_generator

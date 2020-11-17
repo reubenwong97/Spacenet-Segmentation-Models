@@ -2,16 +2,15 @@ import numpy as np
 import tensorflow as tf
 import tensorflow.keras as keras
 
-from .helper import rebuild_npy
-
 class DataGenerator(keras.utils.Sequence):
-    def __init__(self, img_fname_list, mask_fname_list, img_path, mask_path, batch_size=64, shuffle=True):
+    def __init__(self, img_fname_list, mask_fname_list, img_path, mask_path, rebuild_func, batch_size=64, shuffle=True):
         self.batch_size = batch_size
         self.shuffle = shuffle
         self.img_fname_list = img_fname_list
         self.mask_fname_list = mask_fname_list
         self.IMG_PATH = img_path
         self.MASK_PATH = mask_path
+        self.rebuild_func = rebuild_func
 
         self.data_len = len(self.img_fname_list)
 
