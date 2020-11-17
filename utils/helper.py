@@ -123,7 +123,7 @@ def plot_metrics(history, model_name, figure_save_path):
 
     # save figure
     fig.suptitle('Metrics for model: ' + model_name)
-    plt.savefig(figure_save_path/f'{model_name}_metrics.png')
+    plt.savefig(figure_save_path/f'{model_name}.png')
 
     plt.show()
 
