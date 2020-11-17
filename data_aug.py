@@ -1,27 +1,13 @@
 #import helpers etc.
 import utils.helper as helper
 import numpy as np
-import cv2
 import os
 import random
 from matplotlib import pyplot as plt
 
-
-# # Set seed for repeatable results
-# seed = 40
-# np.random.seed(seed)
-# tf.random.set_seed(seed)
-
-#get image and mask path 
-# PATH_TRAIN_IMG, PATH_TRAIN_MASK, PATH_TEST_IMG, PATH_TEST_MASK = helper.data_paths()
-# #get filenames of img and mask as list
-# fnames_img = helper.get_fnames(PATH_TRAIN_IMG)
-# fnames_mask = helper.get_fnames(PATH_TRAIN_MASK)
-# #rebuild np arrays
-# index = 40
-# sample_img = helper.rebuild_npy(PATH_TRAIN_IMG/fnames_img[index])
-# sample_mask = helper.rebuild_npy(PATH_TRAIN_MASK/fnames_mask[index])
-
+# Set seed for repeatable results
+seed = 40
+np.random.seed(seed)
 
 #np arrays must be rebuilt
 def rot90(image,mask):
@@ -43,7 +29,7 @@ def flip_ud(image,mask):
 
 #blend 2 images together
 def blend(img1,img2):
-    alpha = 0.8 + random.random() * 0.4
+    alpha = 0.7 + random.random() * 0.4
     return (img1*alpha + (1-alpha)*img2).astype(np.uint8)
 
 #grayscale image only
@@ -71,7 +57,7 @@ def gauss_noise(image):
     return new_image
 
 def gamma(image):
-    gamma = 0.8+0.4*random.random()
+    gamma = 0.7+0.4*random.random()
     new_image = np.copy(image)
     new_image = np.clip(new_image,a_min=0.0,a_max=None)
     new_image = np.power(new_image,gamma).astype(np.uint8)
@@ -98,13 +84,3 @@ def data_augment(image,mask,rot90_prob=0,flipud_prob=0,fliplr_prob=0,color_aug_p
         image = gamma(image)
 
     return image,mask
-
-# new_image = brightness(sample_img)
-# #new_image,new_mask = data_augment(sample_img,sample_mask,0.5,0.5,0.5,0.5,0.5,0.5)
-# print(new_image.shape)
-# #print(new_mask.shape)
-# print(new_image[0].dtype)
-# #print(new_mask[0].dtype)
-# plt.subplot(121),plt.imshow(sample_img),plt.title('Input')
-# plt.subplot(122),plt.imshow(new_image),plt.title('Output')
-# plt.show()
