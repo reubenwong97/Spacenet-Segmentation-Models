@@ -1,0 +1,27 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Traceback (most recent call last):
+  File "architecture_trial_resnet50_2.py", line 5, in <module>
+    import utils.helper as helper
+  File "/home/UG/wong1109/spacenet_6/utils/helper.py", line 10, in <module>
+    from .datagen import DataGenerator
+  File "/home/UG/wong1109/spacenet_6/utils/datagen.py", line 5, in <module>
+    from .helper import rebuild_npy
+ImportError: cannot import name 'rebuild_npy' from partially initialized module 'utils.helper' (most likely due to a circular import) (/home/UG/wong1109/spacenet_6/utils/helper.py)
