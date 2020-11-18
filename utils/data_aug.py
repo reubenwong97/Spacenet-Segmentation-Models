@@ -1,14 +1,14 @@
 import numpy as np
-import os
 import random
 import tensorflow as tf
-# import .helper as helper
+# from utils import helper
+# from utils import datagen
 # from matplotlib import pyplot as plt
 
 # Set seed for repeatable results
-seed = 40
-np.random.seed(seed)
-tf.random.set_seed(seed)
+# seed = 4
+# np.random.seed(seed)
+# tf.random.set_seed(seed)
 
 #np arrays must be rebuilt
 def rot90(image,mask):
@@ -31,8 +31,9 @@ def flip_ud(image,mask):
 #blend 2 images together
 def blend(img1,img2):
     alpha = 0.7 + random.random() * 0.4
-    uint8_cast = tf.cast(img1*alpha + (1-alpha)*img2, dtype=tf.uint8)
-    return tf.cast(uint8_cast, tf.float32)
+    #uint8_cast = tf.cast(img1*alpha + (1-alpha)*img2, dtype=tf.uint8)
+    return img1*alpha + (1-alpha)*img2
+
 
 #grayscale image only
 def grayscale(image):
@@ -47,14 +48,14 @@ def brightness(image):
     gs = tf.zeros_like(image)
     return blend(image,gs)
 
-def contrast(image):
-    gs = grayscale(image)
-    gs = tf.repeat(gs.mean(), 3)
-    return blend(image,gs)
+# def contrast(image):
+#     gs = grayscale(image)
+#     gs = tf.repeat(tf.math.reduce_sum(gs,axis=2,keepdims=True), 3)
+#     return blend(image,gs)
 
 def gauss_noise(image):
     image = image.numpy()
-    gauss = np.random.normal(10,10.0**0.5,image.shape).astype(np.uint8)
+    gauss = np.random.normal(10,10.0**0.5,image.shape).astype(np.float32)
     new_image = np.copy(image)
     new_image+=gauss-np.min(gauss)
     return tf.convert_to_tensor(new_image, dtype=tf.float32)
@@ -83,11 +84,24 @@ def data_augment(image,mask,rot90_prob=0.4,flipud_prob=0.3,fliplr_prob=0.5,color
         image = saturation(image)
     if random.random() < color_aug_prob:
         image = brightness(image)
-    if random.random() < color_aug_prob:
-        image = contrast(image)
+    # if random.random() < color_aug_prob:
+    #     image = contrast(image)
     if random.random() < gauss_aug_prob:
         image = gauss_noise(image)
     if random.random() < gamma_prob:
         image = gamma(image)
 
     return image,mask
+
+# training_data = datagen.get_dataset('../data_project/train/SN_6.tfrecords')
+# image_batch, label_batch = next(iter(training_data))
+# sample_image = image_batch[100]
+# #sample_image = tf.cast(sample_image,tf.uint8)
+# sample_mask = label_batch[100]
+# sample_mask = tf.expand_dims(sample_mask,-1)
+# new_image,new_mask = data_augment(sample_image,sample_mask)
+# print(new_image.dtype)
+# print(new_mask.dtype)
+# plt.subplot(121),plt.imshow(tf.cast(sample_image,tf.uint8)),plt.title('Input')
+# plt.subplot(122),plt.imshow(tf.cast(new_image,tf.uint8)),plt.title('Output')
+# plt.show()
