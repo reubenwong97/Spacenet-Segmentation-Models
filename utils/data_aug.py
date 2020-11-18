@@ -1,6 +1,7 @@
 import numpy as np
 import os
 import random
+import tensorflow as tf
 # import .helper as helper
 # from matplotlib import pyplot as plt
 
@@ -11,30 +12,30 @@ np.random.seed(seed)
 #np arrays must be rebuilt
 def rot90(image,mask):
     k = random.randint(1,3)
-    new_img = np.rot90(image,k)
-    new_mask = np.rot90(mask,k)
+    new_img = tf.image.rot90(image,k)
+    new_mask = tf.image.rot90(mask,k)
     return new_img,new_mask
 
 #np arrays must be rebuilt
 def flip_lr(image,mask):
-    new_image = np.fliplr(image)
-    new_mask = np.fliplr(mask)
+    new_image = tf.image.flip_left_right(image)
+    new_mask = tf.image.flip_left_right(mask)
     return new_image,new_mask
 
 def flip_ud(image,mask):
-    new_image = np.flipud(image)
-    new_mask = np.flipud(mask)
+    new_image = tf.image.flip_up_down(image)
+    new_mask = tf.image.flip_up_down(mask)
     return new_image, new_mask
 
 #blend 2 images together
 def blend(img1,img2):
     alpha = 0.7 + random.random() * 0.4
-    return (img1*alpha + (1-alpha)*img2).astype(np.uint8)
+    return tf.cast(img1*alpha + (1-alpha)*img2, dtype=tf.uint8)
 
 #grayscale image only
 def grayscale(image):
-    alpha = np.asarray([0.25,0.25,0.25]).reshape((1,1,3))
-    return np.sum(alpha*image,axis=2,keepdims=True)
+    alpha = tf.reshape(tf.constant([0.25,0.25,0.25]), (1,1,3))
+    return tf.math.reduce_sum(alpha*image,axis=2,keepdims=True)
 
 def saturation(image):
     gs = grayscale(image)

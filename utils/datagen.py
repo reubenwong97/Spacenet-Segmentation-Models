@@ -56,45 +56,6 @@ class DataGenerator(keras.utils.Sequence):
             
         return tf.dtypes.cast(X, tf.dtypes.float32), tf.dtypes.cast(Y, tf.dtypes.float32)
 
-def DatasetFromSequenceClass(sequenceClass, stepsPerEpoch, nEpochs=1, batchSize=128, dims=[224,224,3], n_classes=2, data_type=tf.float32, label_type=tf.float32):
-    # eager execution wrapper
-    def DatasetFromSequenceClassEagerContext(func):
-        def DatasetFromSequenceClassEagerContextWrapper(batchIndexTensor):
-            # Use a tf.py_function to prevent auto-graph from compiling the method
-            tensors = tf.py_function(
-                func,
-                inp=[batchIndexTensor],
-                Tout=[data_type, label_type]
-            )
-
-            # set the shape of the tensors - assuming channels last
-            tensors[0].set_shape([batchSize, dims[0], dims[1], dims[2]])   # [samples, height, width, nChannels]
-            tensors[1].set_shape([batchSize, dims[0], dims[1]]) # [samples, height, width, nClasses for one hot]
-            # tensors[1].set_shape([batchSize, dims[0], dims[1], n_classes]) # [samples, height, width, nClasses for one hot]
-            return tensors
-        return DatasetFromSequenceClassEagerContextWrapper
-
-    # TF dataset wrapper that indexes our sequence class
-    @DatasetFromSequenceClassEagerContext
-    def LoadBatchFromSequenceClass(batchIndexTensor):
-        # get our index as numpy value - we can use .numpy() because we have wrapped our function
-        batchIndex = batchIndexTensor.numpy()
-
-        # zero-based index for what batch of data to load; i.e. goes to 0 at stepsPerEpoch and starts cound over
-        zeroBatch = batchIndex % stepsPerEpoch
-
-        # load data
-        data, labels = sequenceClass[zeroBatch]
-
-        # convert to tensors and return
-        return tf.convert_to_tensor(data), tf.convert_to_tensor(labels)
-
-    # create our data set for how many total steps of training we have
-    dataset = tf.data.Dataset.range(stepsPerEpoch*nEpochs)
-
-    # return dataset using map to load our batches of data, use TF to specify number of parallel calls
-    return dataset.map(LoadBatchFromSequenceClass, num_parallel_calls=tf.data.experimental.AUTOTUNE)
-
 def _bytes_feature(value):
   """Returns a bytes_list from a string / byte."""
   if isinstance(value, type(tf.constant(0))):
@@ -219,6 +180,9 @@ def decode_record(record):
 
     image = tf.reshape(image, (height, width, 3))
     label = tf.reshape(label, (height, width))
+
+    image = tf.cast(image, tf.float32)
+    label = tf.cast(label, tf.float32)
 
     return image, label
 
