@@ -31,9 +31,12 @@ BACKBONE = 'resnet50'
 wandb.init(project='architecture_trial_resnet50_datagen')
 model_name = 'architecture_trial_resnet50_datagen'
 
+print('available gpus')
+print(tf.config.experimental.list_physical_devices('GPU'))
+gpu = tf.config.experimental.list_physical_devices('GPU')[0]
 
-
-
+print('allowing GPU memory growth')
+tf.config.experimental.set_memory_growth(gpu, True)
 
 '''
 loading data in the form of tf.data.dataset
