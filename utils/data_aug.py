@@ -1,14 +1,13 @@
 import numpy as np
 import random
 import tensorflow as tf
-# from utils import helper
 # from utils import datagen
 # from matplotlib import pyplot as plt
 
 # Set seed for repeatable results
 # seed = 4
 # np.random.seed(seed)
-# tf.random.set_seed(seed)
+# .random.set_seed(seed)
 
 #np arrays must be rebuilt
 def rot90(image,mask):
@@ -70,10 +69,10 @@ def gamma(image):
 
 #Prob variables needed: rot90_prob,flipud_prob,fliplr_prob,color_aug(for brightness,
 #contrast,saturation), gauss_prob, gamma_prob
-def data_augment(image,mask,rot90_prob=0.4,flipud_prob=0.3,fliplr_prob=0.5,color_aug_prob=0.3,gauss_aug_prob=0.4,gamma_prob=0.2):
+def data_augment(image,mask,rot90_prob=0.4,flipud_prob=0.3,fliplr_prob=0.5,color_aug_prob=0.3,gauss_aug_prob=0.5,gamma_prob=0.2):
     print("image shape: ", image.shape)
     print("mask shape: ", mask.shape)
-    
+    mask = tf.expand_dims(mask, -1)
     if random.random() < rot90_prob:
         image,mask = rot90(image,mask)
     if random.random() < fliplr_prob:
@@ -90,7 +89,7 @@ def data_augment(image,mask,rot90_prob=0.4,flipud_prob=0.3,fliplr_prob=0.5,color
         image = gauss_noise(image)
     if random.random() < gamma_prob:
         image = gamma(image)
-
+    mask = tf.squeeze(mask,-1)
     return image,mask
 
 # training_data = datagen.get_dataset('../data_project/train/SN_6.tfrecords')
@@ -98,10 +97,12 @@ def data_augment(image,mask,rot90_prob=0.4,flipud_prob=0.3,fliplr_prob=0.5,color
 # sample_image = image_batch[100]
 # #sample_image = tf.cast(sample_image,tf.uint8)
 # sample_mask = label_batch[100]
-# sample_mask = tf.expand_dims(sample_mask,-1)
+# #sample_mask = tf.expand_dims(sample_mask,-1)
 # new_image,new_mask = data_augment(sample_image,sample_mask)
-# print(new_image.dtype)
-# print(new_mask.dtype)
-# plt.subplot(121),plt.imshow(tf.cast(sample_image,tf.uint8)),plt.title('Input')
-# plt.subplot(122),plt.imshow(tf.cast(new_image,tf.uint8)),plt.title('Output')
+# print("new image shape:" ,new_image.shape)
+# print("new_mask shape:",new_mask.shape)
+# plt.subplot(221),plt.imshow(tf.cast(sample_image,tf.uint8)),plt.title('Input')
+# plt.subplot(222),plt.imshow(tf.cast(new_image,tf.uint8)),plt.title('Output')
+# plt.subplot(223),plt.imshow(tf.cast(sample_mask,tf.uint8)),plt.title('Input')
+# plt.subplot(224),plt.imshow(tf.cast(new_mask,tf.uint8)),plt.title('Output')
 # plt.show()
