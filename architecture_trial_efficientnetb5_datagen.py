@@ -27,17 +27,32 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet50'
-wandb.init(project='architecture_trial_resnet50_datagen')
-model_name = 'architecture_trial_resnet50_datagen'
+BACKBONE = 'efficientnetb5'
+wandb.init(project='architecture_trial_efficientnetb5_datagen')
+model_name = 'architecture_trial_efficientnetb5_datagen'
 
 
 
 
 
 '''
-loading data in the form of tf.data.dataset
+load your data. this is a 5GB numpy array with all our data
 '''
+print("loading data")
+# PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS = helper.results_paths()
+# X_train, Y_train, X_test, Y_test = helper.generate_train_test()
+print("X_train, Y_train, X_test, Y_test loaded")
+
+
+'''
+preprocess input to ensure it fits the model definition
+'''
+print("preprocessing input")
+# preprocess_input = sm.get_preprocessing(BACKBONE)
+
+# X_train = preprocess_input(X_train)
+# X_test = preprocess_input(X_test)
+
 PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS = helper.results_paths()
 
 print('reading tf.data.Dataset')
@@ -65,7 +80,6 @@ fit model - save best weights at each epoch
 
 history = model.fit(
    train_data,
-#    epochs=1,
    epochs=100,
    validation_data=val_data,
    callbacks=[
@@ -93,12 +107,12 @@ model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 #     ]
 # ) 
 
-test_metrics = model.evaluate(test_data, batch_size=16)
+# test_metrics = model.evaluate(X_test, Y_test, batch_size=16)
 
-test_metrics_dict = {
-    'test_loss': test_metrics[0],
-    'test_iou_score': test_metrics[1]
-}
+# test_metrics_dict = {
+#     'test_loss': test_metrics[0],
+#     'test_iou_score': test_metrics[1]
+# }
 
-# np.save(PATH_PREDICTIONS / model_name, predictions)
-np.save(PATH_PREDICTIONS/str(model_name + "_prediction_score"), test_metrics_dict)
+# # np.save(PATH_PREDICTIONS / model_name, predictions)
+# np.save(PATH_PREDICTIONS/str(model_name + "_prediction_score"), test_metrics_dict)
