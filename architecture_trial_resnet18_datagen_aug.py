@@ -28,9 +28,9 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet34'
-wandb.init(project='architecture_trial_resnet34_datagen_aug')
-model_name = 'architecture_trial_resnet34_datagen_aug'
+BACKBONE = 'resnet18'
+wandb.init(project='architecture_trial_resnet18_datagen_aug')
+model_name = 'architecture_trial_resnet18_datagen_aug'
 augment = True
 
 
