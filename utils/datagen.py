@@ -242,8 +242,8 @@ def load_dataset(filenames, train=True):
 
     return dataset
 
-def get_dataset(filenames, batch_size=128):
-    dataset = load_dataset(filenames)
+def get_dataset(filenames, batch_size=128, train=True):
+    dataset = load_dataset(filenames, train=train)
     dataset.shuffle(2048)
     dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
     dataset.batch(batch_size)
