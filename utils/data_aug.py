@@ -8,6 +8,7 @@ import tensorflow as tf
 # Set seed for repeatable results
 seed = 40
 np.random.seed(seed)
+tf.random.set_seed(seed)
 
 #np arrays must be rebuilt
 def rot90(image,mask):
