@@ -107,12 +107,12 @@ model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 #     ]
 # ) 
 
-# test_metrics = model.evaluate(X_test, Y_test, batch_size=16)
+test_metrics = model.evaluate(test_data, steps=3)
 
-# test_metrics_dict = {
-#     'test_loss': test_metrics[0],
-#     'test_iou_score': test_metrics[1]
-# }
+test_metrics_dict = {
+    'test_loss': test_metrics[0],
+    'test_iou_score': test_metrics[1]
+}
 
-# # np.save(PATH_PREDICTIONS / model_name, predictions)
-# np.save(PATH_PREDICTIONS/str(model_name + "_prediction_score"), test_metrics_dict)
+# np.save(PATH_PREDICTIONS / model_name, predictions)
+np.save(PATH_PREDICTIONS/str(model_name + "_prediction_score"), test_metrics_dict)

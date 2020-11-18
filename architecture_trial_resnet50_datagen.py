@@ -93,7 +93,7 @@ model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 #     ]
 # ) 
 
-test_metrics = model.evaluate(test_data, batch_size=16)
+test_metrics = model.evaluate(test_data, steps=3)
 
 test_metrics_dict = {
     'test_loss': test_metrics[0],
