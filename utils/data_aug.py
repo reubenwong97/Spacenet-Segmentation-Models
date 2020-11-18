@@ -30,7 +30,8 @@ def flip_ud(image,mask):
 #blend 2 images together
 def blend(img1,img2):
     alpha = 0.7 + random.random() * 0.4
-    return tf.cast(img1*alpha + (1-alpha)*img2, dtype=tf.uint8)
+    uint8_cast = tf.cast(img1*alpha + (1-alpha)*img2, dtype=tf.uint8)
+    return tf.cast(uint8_cast, tf.float32)
 
 #grayscale image only
 def grayscale(image):
@@ -42,26 +43,28 @@ def saturation(image):
     return blend(image,gs)
 
 def brightness(image):
-    gs = np.zeros_like(image)
+    gs = tf.zeros_like(image)
     return blend(image,gs)
 
 def contrast(image):
     gs = grayscale(image)
-    gs = np.repeat(gs.mean(),3)
+    gs = tf.repeat(gs.mean(), 3)
     return blend(image,gs)
 
 def gauss_noise(image):
+    image = image.numpy()
     gauss = np.random.normal(10,10.0**0.5,image.shape).astype(np.uint8)
     new_image = np.copy(image)
     new_image+=gauss-np.min(gauss)
-    return new_image
+    return tf.convert_to_tensor(new_image, dtype=tf.float32)
 
 def gamma(image):
+    image = image.numpy()
     gamma = 0.7+0.4*random.random()
     new_image = np.copy(image)
     new_image = np.clip(new_image,a_min=0.0,a_max=None)
     new_image = np.power(new_image,gamma).astype(np.uint8)
-    return new_image
+    return tf.convert_to_tensor(new_image, dtype=tf.float32)
 
 #Prob variables needed: rot90_prob,flipud_prob,fliplr_prob,color_aug(for brightness,
 #contrast,saturation), gauss_prob, gamma_prob
