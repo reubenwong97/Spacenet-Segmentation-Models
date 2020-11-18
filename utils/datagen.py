@@ -222,7 +222,7 @@ def decode_record(record):
 
     return image, label
 
-def load_dataset(filenames):
+def load_dataset(filenames, train=True):
     ignore_order = tf.data.Options()
     ignore_order.experimental_deterministic = True
     dataset = tf.data.TFRecordDataset(
@@ -235,9 +235,10 @@ def load_dataset(filenames):
         decode_record, num_parallel_calls=tf.data.experimental.AUTOTUNE
     )
 
-    dataset = dataset.map(
-        data_augment, num_parallel_calls=tf.data.experimental.AUTOTUNE
-    )
+    if train:
+        dataset = dataset.map(
+            data_augment, num_parallel_calls=tf.data.experimental.AUTOTUNE
+        )
 
     return dataset
 
