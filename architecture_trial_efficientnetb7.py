@@ -26,9 +26,9 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'vgg19'
-wandb.init(project='architecture_trial_vgg19')
-model_name = 'architecture_trial_vgg19'
+BACKBONE = 'efficientnetb7'
+wandb.init(project='architecture_trial_efficientnetb7')
+model_name = 'architecture_trial_efficientnetb7'
 
 
 
@@ -104,7 +104,7 @@ model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 #     callbacks=[
 #         TQDMCallback()
 #     ]
-# )
+# ) 
 
 test_metrics = model.evaluate(X_test, Y_test, batch_size=16)
 
