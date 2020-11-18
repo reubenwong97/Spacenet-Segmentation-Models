@@ -78,7 +78,7 @@ def history_loader(model_name, history_save_path):
 used to plot the image, and the mask side by side, and also the prediction, if any
 index: int, img: np.ndarray, mask: np.ndarray, pred: np.ndarray
 '''
-def plot_img_mask(index, img, mask, pred=None):    
+def plot_img_mask(index, img, mask, pred=None):
     if pred == None:
         fig, (ax1, ax2) = plt.subplots(1,2, figsize=(14,7))
         ax1.imshow(img)
@@ -167,26 +167,37 @@ def rebuild_npy(npy_path, img_height=224, img_width=224):
 '''
 used to generate X_train, Y_train, X_test, Y_test as numpy arrays, from their .npy files
 '''
-# def generate_train_test():
-#     paths = data_paths()
-#     data = [[], [], [], []]
+def generate_train_test():
+    paths = data_paths()
+    data = [[], [], [], []]
 
-#     for index, path in tqdm(enumerate(paths), total=len(paths)):
-#         fnames = get_fnames(path)
+    for index, path in tqdm(enumerate(paths), total=len(paths)):
+        fnames = get_fnames(path)
         
-#         # for fname in tqdm(fnames[:32], total=len(fnames[:32])):
-#         for fname in tqdm(fnames, total=len(fnames)):
-#             npy = rebuild_npy(path / fname)
-#             data[index].append(npy)
+        # for fname in tqdm(fnames[:16], total=len(fnames[:16])):
+        for fname in tqdm(fnames, total=len(fnames)):
+            npy = rebuild_npy(path / fname)
+            data[index].append(npy)
 
-#         data[index] = np.array(data[index])
+        data[index] = np.array(data[index])
     
-#     X_train, Y_train, X_test, Y_test = data[0], data[1], data[2], data[3]
+    X_train, Y_train, X_test, Y_test = data[0], data[1], data[2], data[3]
     
-#     return (X_train, Y_train, X_test, Y_test)
+    return (X_train, Y_train, X_test, Y_test)
 
 # def generate_train_val_test(val_percent=0.7):
 #     PATH_TRAIN_IMG, PATH_TRAIN_MASK, PATH_TEST_IMG, PATH_TEST_MASK = data_paths()
+
+#     val_split = int(len(get_fnames(PATH_TRAIN_IMG))*val_percent)
+#     X_train_fnames = get_fnames(PATH_TRAIN_IMG)[:val_split]
+#     Y_train_fnames = get_fnames(PATH_TRAIN_MASK)[:val_split]
+#     X_val_fnames = get_fnames(PATH_TRAIN_IMG)[val_split:]
+#     Y_val_fnames = get_fnames(PATH_TRAIN_MASK)[val_split:]
+#     Y_test_fnames = get_fnames(PATH_TEST_MASK)
+
+#     train_generator = DataGenerator(X_train_fnames, Y_train_fnames, PATH_TRAIN_IMG, PATH_TRAIN_MASK, rebuild_func=rebuild_npy)
+#     val_generator = DataGenerator(X_val_fnames, Y_val_fnames, PATH_TRAIN_IMG, PATH_TRAIN_MASK, rebuild_func=rebuild_npy)
+#     test_generator = DataGenerator(X_test_fnames, Y_test_fnames, PATH_TEST_IMG, PATH_TEST_MASK, rebuild_func=rebuild_npy)
 
 #     val_split = int(len(get_fnames(PATH_TRAIN_IMG))*val_percent)
 #     X_train_fnames = get_fnames(PATH_TRAIN_IMG)[:val_split]

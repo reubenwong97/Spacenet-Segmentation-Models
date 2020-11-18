@@ -1,0 +1,35 @@
+#sweep.yaml
+name: hyperparam sweep
+program:
+metric:
+  name: val_accuracy
+  goal: maximize
+method: random
+early_terminate:
+  type: hyperband
+  min_iter: 5
+  max_iter: 25
+ROT90_PROB:
+  distribution: uniform
+  min: 0.0
+  max: 0.5
+FLIPUD_PROB:
+  distribution: uniform
+  min: 0.0
+  max: 0.5
+FLIPLR_PROB:
+  distribution: uniform
+  min: 0.0
+  max: 0.5
+COLOR_AUG_PROB:
+  distribution: uniform
+  min: 0.0
+  max: 0.5
+GAUSS_AUG_PROB:
+  distribution: uniform
+  min: 0.0
+  max: 0.5
+GAMMA_PROB:
+  distribution: uniform
+  min: 0.0
+  max: 0.5
