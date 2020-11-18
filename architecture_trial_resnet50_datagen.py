@@ -19,7 +19,7 @@ sm.set_framework(SM_FRAMEWORK)
 import wandb
 from wandb.keras import WandbCallback
 
-from utils.datagen import get_data
+from utils.datagen import get_dataset
 
 ''' 
 ---------------------------------------
