@@ -19,6 +19,8 @@ sm.set_framework(SM_FRAMEWORK)
 import wandb
 from wandb.keras import WandbCallback
 
+from utils.datagen import get_dataset
+
 
 ''' 
 ---------------------------------------
@@ -26,37 +28,22 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet152'
-wandb.init(project='architecture_trial_resnet152')
-model_name = 'architecture_trial_resnet152'
-
-
-
+BACKBONE = 'resnet34'
+wandb.init(project='architecture_trial_resnet34_datagen_aug')
+model_name = 'architecture_trial_resnet34_datagen_aug'
+augment = True
 
 
 '''
-load your data. this is a 5GB numpy array with all our data
+loading data in the form of tf.data.dataset
 '''
-print("loading data")
 PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS = helper.results_paths()
-X_train, Y_train, X_test, Y_test = helper.generate_train_test()
-print("X_train, Y_train, X_test, Y_test loaded")
 
-
-'''
-preprocess input to ensure it fits the model definition
-'''
-print("preprocessing input")
-preprocess_input = sm.get_preprocessing(BACKBONE)
-
-X_train = preprocess_input(X_train)
-X_test = preprocess_input(X_test)
-
-X_train = tf.dtypes.cast(X_train, tf.dtypes.float32)
-X_test = tf.dtypes.cast(X_test, tf.dtypes.float32)
-Y_train = tf.dtypes.cast(Y_train, tf.dtypes.float32)
-Y_test = tf.dtypes.cast(Y_test, tf.dtypes.float32)
-print("finished preprocessing input")
+print('reading tf.data.Dataset')
+train_data = get_dataset('./data_project/train/SN_6.tfrecords', augment=augment)
+val_data = get_dataset('./data_project/train/SN_6_val.tfrecords')
+test_data = get_dataset('./data_project/test/SN_6_test.tfrecords')
+print("tf.data.Dataset for train/val/test read")
 
 
 '''
@@ -76,14 +63,14 @@ fit model - save best weights at each epoch
 CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5')), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto', period=1)
 
 history = model.fit(
-   x=X_train,
-   y=Y_train,
-   batch_size=16,
+   train_data,
    epochs=100,
-   validation_split=0.3,
+   validation_data=val_data,
+   steps_per_epoch=105,
+   validation_steps=45,
    callbacks=[
        TQDMCallback(),
-       WandbCallback(log_weights=True),
+       WandbCallback(log_weights=True, save_weights_only=True),
        CheckpointCallback
        ]
 )
@@ -104,9 +91,9 @@ model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 #     callbacks=[
 #         TQDMCallback()
 #     ]
-# )
+# ) 
 
-test_metrics = model.evaluate(X_test, Y_test, batch_size=16)
+test_metrics = model.evaluate(test_data, steps=3)
 
 test_metrics_dict = {
     'test_loss': test_metrics[0],

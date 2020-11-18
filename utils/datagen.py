@@ -136,7 +136,7 @@ def decode_record(record):
 
     return image, label
 
-def load_dataset(filenames, train=True):
+def load_dataset(filenames, augment=False):
     ignore_order = tf.data.Options()
     ignore_order.experimental_deterministic = False
     dataset = tf.data.TFRecordDataset(
@@ -149,7 +149,7 @@ def load_dataset(filenames, train=True):
         decode_record, num_parallel_calls=tf.data.experimental.AUTOTUNE
     )
 
-    if train:
+    if augment:
         dataset = dataset.map(
             lambda x, y: (data_augment(x, y)), num_parallel_calls=tf.data.experimental.AUTOTUNE
         )

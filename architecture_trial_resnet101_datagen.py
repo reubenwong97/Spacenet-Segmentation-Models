@@ -28,9 +28,10 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet152'
-wandb.init(project='architecture_trial_resnet152_datagen')
-model_name = 'architecture_trial_resnet152_datagen'
+BACKBONE = 'resnet101'
+wandb.init(project='architecture_trial_resnet101_datagen')
+model_name = 'architecture_trial_resnet101_datagen'
+augment = False
 
 
 '''
@@ -39,9 +40,9 @@ loading data in the form of tf.data.dataset
 PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS = helper.results_paths()
 
 print('reading tf.data.Dataset')
-train_data = get_dataset('./data_project/train/SN_6.tfrecords', train=True)
-val_data = get_dataset('./data_project/train/SN_6_val.tfrecords', train=False)
-test_data = get_dataset('./data_project/test/SN_6_test.tfrecords', train=False)
+train_data = get_dataset('./data_project/train/SN_6.tfrecords', augment=augment)
+val_data = get_dataset('./data_project/train/SN_6_val.tfrecords')
+test_data = get_dataset('./data_project/test/SN_6_test.tfrecords')
 print("tf.data.Dataset for train/val/test read")
 
 
