@@ -19,7 +19,7 @@ sm.set_framework(SM_FRAMEWORK)
 import wandb
 from wandb.keras import WandbCallback
 
-from utils.datagen import get_data
+from utils.datagen import get_dataset
 
 ''' 
 ---------------------------------------
@@ -38,22 +38,14 @@ model_name = 'architecture_trial_resnet50_datagen'
 '''
 load your data. this is a 5GB numpy array with all our data
 '''
-print("loading data")
 PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS = helper.results_paths()
-X_train, Y_train, X_test, Y_test = helper.generate_train_test()
-print("X_train, Y_train, X_test, Y_test loaded")
-
-
-'''
-preprocess input to ensure it fits the model definition
-'''
-print("preprocessing input")
-preprocess_input = sm.get_preprocessing(BACKBONE)
 
 print('reading tf.data.Dataset')
-train_data = get_data('./data_project/train/SN_6.tfrecords', train=True)
-val_data = get_data('./data_project/train/SN_6_val.tfrecords', train=False)
-test_data = get_data('./data_project/test/SN_6_test.tfrecords', train=False)
+train_data = get_dataset('./data_project/train/SN_6.tfrecords', train=True)
+val_data = get_dataset('./data_project/train/SN_6_val.tfrecords', train=False)
+test_data = get_dataset('./data_project/test/SN_6_test.tfrecords', train=False)
+print("tf.data.Dataset for train/val/test read")
+
 
 '''
 define the model - make sure to set model name
@@ -73,7 +65,8 @@ CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5
 
 history = model.fit(
    train_data,
-   epochs=100,
+   epochs=1,
+#    epochs=100,
    validation_data=val_data,
    callbacks=[
        TQDMCallback(),
@@ -100,7 +93,7 @@ model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 #     ]
 # ) 
 
-test_metrics = model.evaluate(X_test, Y_test, batch_size=16)
+test_metrics = model.evaluate(test_data, batch_size=16)
 
 test_metrics_dict = {
     'test_loss': test_metrics[0],
