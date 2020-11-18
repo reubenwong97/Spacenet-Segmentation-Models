@@ -86,11 +86,14 @@ history = model.fit(
    train_data,
    epochs=100,
    validation_data=val_data,
+   steps_per_epoch=105,
+   validation_steps=45,
    callbacks=[
        TQDMCallback(),
        WandbCallback(log_weights=True),
        CheckpointCallback
        ]
+       
 )
 
 helper.history_saver(history, model_name, PATH_HISTORIES, already_npy=False)
