@@ -199,14 +199,14 @@ def load_dataset(filenames, train=True):
         decode_record, num_parallel_calls=tf.data.experimental.AUTOTUNE
     )
 
-    if train:
-        # dataset = dataset.map(
-        #     data_augment, num_parallel_calls=tf.data.experimental.AUTOTUNE
-        # )
+    # if train:
+    #     # dataset = dataset.map(
+    #     #     data_augment, num_parallel_calls=tf.data.experimental.AUTOTUNE
+    #     # )
 
-        dataset = dataset.map(
-            lambda x, y: (data_augment(x, y)), num_parallel_calls=tf.data.experimental.AUTOTUNE
-        )
+    #     dataset = dataset.map(
+    #         lambda x, y: (data_augment(x, y)), num_parallel_calls=tf.data.experimental.AUTOTUNE
+    #     )
 
     return dataset
 

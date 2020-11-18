@@ -28,5 +28,5 @@ from utils.datagen import parse_record, decode_record, get_dataset
 training_data = get_dataset('./data_project/train/SN_6.tfrecords')
 image_batch, label_batch = next(iter(training_data))
 
-print(image_batch[0])
-print(image_batch[0].shape)
+print(image_batch[3])
+print(image_batch[3].shape)
