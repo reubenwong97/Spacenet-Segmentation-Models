@@ -224,7 +224,7 @@ def decode_record(record):
 
 def load_dataset(filenames, train=True):
     ignore_order = tf.data.Options()
-    ignore_order.experimental_deterministic = True
+    ignore_order.experimental_deterministic = False
     dataset = tf.data.TFRecordDataset(
         filenames
     )
@@ -244,7 +244,7 @@ def load_dataset(filenames, train=True):
 
 def get_dataset(filenames, batch_size=128, train=True):
     dataset = load_dataset(filenames, train=train)
-    dataset.shuffle(2048)
-    dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
-    dataset.batch(batch_size)
+    dataset = dataset.shuffle(2048)
+    dataset = dataset.prefetch(buffer_size=tf.data.experimental.AUTOTUNE)
+    dataset = dataset.batch(batch_size)
     return dataset
