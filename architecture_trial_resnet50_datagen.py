@@ -7,8 +7,8 @@ import numpy as np
 
 import tensorflow as tf
 from tensorflow import keras
-# from keras_tqdm import TQDMCallback
-# from keras.callbacks import ModelCheckpoint
+from keras_tqdm import TQDMCallback
+from keras.callbacks import ModelCheckpoint
 
 import os
 os.environ['SM_FRAMEWORK'] = 'tf.keras'
@@ -31,9 +31,12 @@ BACKBONE = 'resnet50'
 wandb.init(project='architecture_trial_resnet50_datagen')
 model_name = 'architecture_trial_resnet50_datagen'
 
+# print('available gpus')
+# print(tf.config.experimental.list_physical_devices('GPU'))
+# gpu = tf.config.experimental.list_physical_devices('GPU')[0]
 
-
-
+# print('allowing GPU memory growth')
+# tf.config.experimental.set_memory_growth(gpu, True)
 
 '''
 loading data in the form of tf.data.dataset
@@ -61,17 +64,18 @@ model.compile(
 '''
 fit model - save best weights at each epoch
 '''
-# CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5')), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto', period=1)
+CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5')), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto', period=1)
 
 history = model.fit(
    train_data,
-#    epochs=1,
    epochs=100,
    validation_data=val_data,
+   steps_per_epoch=105,
+   validation_steps=45,
    callbacks=[
-    #    TQDMCallback(),
+       TQDMCallback(),
        WandbCallback(log_weights=True, save_weights_only=True),
-    #    CheckpointCallback
+       CheckpointCallback
        ]
 )
 
