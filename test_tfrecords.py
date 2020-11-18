@@ -26,9 +26,7 @@ from utils.datagen import parse_record, decode_record, get_dataset
 #     ax.imshow(im)
 
 training_data = get_dataset('./data_project/train/SN_6.tfrecords')
-image_batch, label_batch, height_batch = next(iter(training_data))
+image_batch, label_batch = next(iter(training_data))
 
-for i, (image, label, height) in enumerate(training_data):
-    if i == 11:
-        break
-    print(image)
+print(image_batch[0])
+print(image_batch[0].shape)
