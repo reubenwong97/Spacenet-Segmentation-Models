@@ -7,8 +7,8 @@ import numpy as np
 
 import tensorflow as tf
 from tensorflow import keras
-# from keras_tqdm import TQDMCallback
-# from keras.callbacks import ModelCheckpoint
+from keras_tqdm import TQDMCallback
+from keras.callbacks import ModelCheckpoint
 
 import os
 os.environ['SM_FRAMEWORK'] = 'tf.keras'
@@ -31,9 +31,12 @@ BACKBONE = 'efficientnetb5'
 wandb.init(project='architecture_trial_efficientnetb5_datagen')
 model_name = 'architecture_trial_efficientnetb5_datagen'
 
+print('available gpus')
+print(tf.config.experimental.list_physical_devices('GPU'))
+gpu = tf.config.experimental.list_physical_devices('GPU')[0]
 
-
-
+print('allowing GPU memory growth')
+tf.config.experimental.set_memory_growth(gpu, True)
 
 '''
 load your data. this is a 5GB numpy array with all our data
@@ -77,15 +80,16 @@ model.compile(
 fit model - save best weights at each epoch
 '''
 # CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5')), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto', period=1)
+CheckpointCallback = ModelCheckpoint(filepath=str(PATH_CHECKPOINTS/model_name), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto')
 
 history = model.fit(
    train_data,
    epochs=100,
    validation_data=val_data,
    callbacks=[
-    #    TQDMCallback(),
-       WandbCallback(log_weights=True, save_weights_only=True),
-    #    CheckpointCallback
+       TQDMCallback(),
+       WandbCallback(log_weights=True),
+       CheckpointCallback
        ]
 )
 
@@ -97,7 +101,7 @@ helper.plot_metrics(history, model_name, PATH_FIGURES)
 '''
 predict on the test set. load best weights from checkpoints
 '''
-model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
+model.load_weights(str(PATH_CHECKPOINTS / (model_name)))
 
 # predictions = model.predict(
 #     X_test,
