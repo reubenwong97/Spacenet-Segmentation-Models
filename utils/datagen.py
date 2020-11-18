@@ -151,7 +151,7 @@ def load_dataset(filenames, augment=False):
 
     if augment:
         dataset = dataset.map(
-            lambda x, y: (data_augment(x, y)), num_parallel_calls=tf.data.experimental.AUTOTUNE
+            data_augment, num_parallel_calls=tf.data.experimental.AUTOTUNE
         )
 
     return dataset
