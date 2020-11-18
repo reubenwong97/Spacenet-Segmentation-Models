@@ -1,4 +1,5 @@
 from utils.helper import rebuild_npy, data_paths, get_fnames
+from utils.data_aug import data_augment
 import numpy as np
 import os
 import tensorflow as tf
@@ -219,7 +220,7 @@ def decode_record(record):
     image = tf.reshape(image, (height, width, 3))
     label = tf.reshape(label, (height, width))
 
-    return image, label, height
+    return image, label
 
 def load_dataset(filenames):
     ignore_order = tf.data.Options()
@@ -232,6 +233,10 @@ def load_dataset(filenames):
     )
     dataset = dataset.map(
         decode_record, num_parallel_calls=tf.data.experimental.AUTOTUNE
+    )
+
+    dataset = dataset.map(
+        data_augment, num_parallel_calls=tf.data.experimental.AUTOTUNE
     )
 
     return dataset
