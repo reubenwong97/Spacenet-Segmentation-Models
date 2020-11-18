@@ -1,13 +1,10 @@
-import numpy as np
 import random
 import tensorflow as tf
-# from utils import datagen
-# from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 
 # Set seed for repeatable results
 # seed = 4
-# np.random.seed(seed)
-# .random.set_seed(seed)
+# tf.random.set_seed(seed)
 
 #np arrays must be rebuilt
 def rot90(image,mask):
@@ -54,18 +51,17 @@ def brightness(image):
 
 def gauss_noise(image):
     image = image.numpy()
-    gauss = np.random.normal(10,10.0**0.5,image.shape).astype(np.float32)
-    new_image = np.copy(image)
-    new_image+=gauss-np.min(gauss)
-    return tf.convert_to_tensor(new_image, dtype=tf.float32)
+    gauss = tf.random.normal(image.shape,10.0,10.0**0.5)
+    new_image = tf.identity(image)
+    new_image = tf.add(new_image,gauss)
+    return new_image
 
 def gamma(image):
-    image = image.numpy()
     gamma = 0.7+0.4*random.random()
-    new_image = np.copy(image)
-    new_image = np.clip(new_image,a_min=0.0,a_max=None)
-    new_image = np.power(new_image,gamma).astype(np.uint8)
-    return tf.convert_to_tensor(new_image, dtype=tf.float32)
+    new_image = tf.identity(image)
+    new_image = tf.clip_by_value(new_image,clip_value_min=0.0,clip_value_max=255)
+    new_image = tf.math.pow(new_image,gamma)
+    return new_image
 
 #Prob variables needed: rot90_prob,flipud_prob,fliplr_prob,color_aug(for brightness,
 #contrast,saturation), gauss_prob, gamma_prob
@@ -95,10 +91,9 @@ def data_augment(image,mask,rot90_prob=0.4,flipud_prob=0.3,fliplr_prob=0.5,color
 # training_data = datagen.get_dataset('../data_project/train/SN_6.tfrecords')
 # image_batch, label_batch = next(iter(training_data))
 # sample_image = image_batch[100]
-# #sample_image = tf.cast(sample_image,tf.uint8)
 # sample_mask = label_batch[100]
-# #sample_mask = tf.expand_dims(sample_mask,-1)
 # new_image,new_mask = data_augment(sample_image,sample_mask)
+# #new_image = gamma(sample_image)
 # print("new image shape:" ,new_image.shape)
 # print("new_mask shape:",new_mask.shape)
 # plt.subplot(221),plt.imshow(tf.cast(sample_image,tf.uint8)),plt.title('Input')
