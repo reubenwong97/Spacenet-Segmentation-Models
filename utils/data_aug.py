@@ -50,7 +50,6 @@ def brightness(image):
 #     return blend(image,gs)
 
 def gauss_noise(image):
-    image = image.numpy()
     gauss = tf.random.normal(image.shape,10.0,10.0**0.5)
     new_image = tf.identity(image)
     new_image = tf.add(new_image,gauss)
