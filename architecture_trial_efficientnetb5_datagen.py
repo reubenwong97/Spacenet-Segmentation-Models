@@ -70,7 +70,7 @@ define the model - make sure to set model name
 '''
 model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3))
 model.compile(
-    optimizer='rmsprop',
+    optimizer='adam',
     loss=sm.losses.BinaryFocalLoss(alpha=0.75, gamma=0.25),
     metrics=[sm.metrics.IOUScore()],
 )
