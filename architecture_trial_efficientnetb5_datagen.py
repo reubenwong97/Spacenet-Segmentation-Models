@@ -79,8 +79,8 @@ model.compile(
 '''
 fit model - save best weights at each epoch
 '''
-# CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5')), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto', period=1)
-CheckpointCallback = ModelCheckpoint(filepath=str(PATH_CHECKPOINTS/model_name), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto')
+CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5')), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto', period=1)
+# CheckpointCallback = ModelCheckpoint(filepath=str(PATH_CHECKPOINTS/model_name), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto')
 
 history = model.fit(
    train_data,
