@@ -19,6 +19,7 @@ sm.set_framework(SM_FRAMEWORK)
 import wandb
 from wandb.keras import WandbCallback
 
+from utils.datagen import get_data
 
 ''' 
 ---------------------------------------
@@ -38,7 +39,7 @@ model_name = 'architecture_trial_resnet50_datagen'
 load your data. this is a 5GB numpy array with all our data
 '''
 print("loading data")
-PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS = helper.results_paths()
+PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS = helper.results_paths()
 X_train, Y_train, X_test, Y_test = helper.generate_train_test()
 print("X_train, Y_train, X_test, Y_test loaded")
 
@@ -49,15 +50,10 @@ preprocess input to ensure it fits the model definition
 print("preprocessing input")
 preprocess_input = sm.get_preprocessing(BACKBONE)
 
-X_train = preprocess_input(X_train)
-X_test = preprocess_input(X_test)
-
-X_train = tf.dtypes.cast(X_train, tf.dtypes.float32)
-X_test = tf.dtypes.cast(X_test, tf.dtypes.float32)
-Y_train = tf.dtypes.cast(Y_train, tf.dtypes.float32)
-Y_test = tf.dtypes.cast(Y_test, tf.dtypes.float32)
-print("finished preprocessing input")
-
+print('reading tf.data.Dataset')
+train_data = get_data('./data_project/train/SN_6.tfrecords', train=True)
+val_data = get_data('./data_project/train/SN_6_val.tfrecords', train=False)
+test_data = get_data('./data_project/test/SN_6_test.tfrecords', train=False)
 
 '''
 define the model - make sure to set model name
@@ -72,17 +68,13 @@ model.compile(
 
 '''
 fit model - save best weights at each epoch
-if you use data generator use model.fit_generator(...) instead of model.fit(...)
-more about `fit_generator` here: https://keras.io/models/sequential/#fit_generator
 '''
 CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5')), monitor='val_loss', verbose=1, save_weights_only=True, save_best_only=True, mode='auto', period=1)
 
 history = model.fit(
-   x=X_train,
-   y=Y_train,
-   batch_size=64,
+   train_data,
    epochs=100,
-   validation_split=0.3,
+   validation_data=val_data,
    callbacks=[
        TQDMCallback(),
        WandbCallback(log_weights=True),
@@ -90,36 +82,30 @@ history = model.fit(
        ]
 )
 
+helper.history_saver(history, model_name, PATH_HISTORIES, already_npy=False)
+history = helper.history_loader(model_name, PATH_HISTORIES)
+helper.plot_metrics(history, model_name, PATH_FIGURES)
+
 
 '''
-predict on the test set
+predict on the test set. load best weights from checkpoints
 '''
-predictions = model.predict(
-    test_generator,
-    verbose=1,
-    callbacks=[
-        TQDMCallback()
-    ]
-)
+model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 
-test_metrics = model.evaluate(test_generator)
+# predictions = model.predict(
+#     X_test,
+#     verbose=1,
+#     callbacks=[
+#         TQDMCallback()
+#     ]
+# ) 
+
+test_metrics = model.evaluate(X_test, Y_test, batch_size=16)
 
 test_metrics_dict = {
     'test_loss': test_metrics[0],
     'test_iou_score': test_metrics[1]
 }
 
-
-'''
-save the results and load 
-'''
-helper.history_saver(history, model_name, PATH_HISTORIES, already_npy=False)
-history = helper.history_loader(model_name, PATH_HISTORIES)
-helper.plot_metrics(history, model_name, PATH_FIGURES)
-
-np.save(PATH_PREDICTIONS / model_name, predictions)
+# np.save(PATH_PREDICTIONS / model_name, predictions)
 np.save(PATH_PREDICTIONS/str(model_name + "_prediction_score"), test_metrics_dict)
-
-
-
-
