@@ -69,6 +69,9 @@ def gamma(image):
 #Prob variables needed: rot90_prob,flipud_prob,fliplr_prob,color_aug(for brightness,
 #contrast,saturation), gauss_prob, gamma_prob
 def data_augment(image,mask,rot90_prob=0.4,flipud_prob=0.3,fliplr_prob=0.5,color_aug_prob=0.3,gauss_aug_prob=0.4,gamma_prob=0.2):
+    print("image shape: ", image.shape)
+    print("mask shape: ", mask.shape)
+    
     if random.random() < rot90_prob:
         image,mask = rot90(image,mask)
     if random.random() < fliplr_prob:
