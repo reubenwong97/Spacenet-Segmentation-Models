@@ -1,9 +1,11 @@
-# Project specific
+# Project specific folders
 data_all/*
 data_project/*
 wandb/*
 models/*
 tensorboard/*
+
+# Project specific filetypes
 *.hdf5
 *.err
 *.out
