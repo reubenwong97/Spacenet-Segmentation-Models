@@ -41,7 +41,9 @@ GLOBAL - CHANGE HERE
 ''' 
 
 BACKBONE = 'resnet18'
-wandb.init(project='external_parameter_loss_jaccardloss')
+wandb.init(project='external_parameter_loss')
+config = wandb.config
+config.project_description = 'jaccardloss'
 model_name = 'external_parameter_loss_jaccardloss'
 augment = False
 

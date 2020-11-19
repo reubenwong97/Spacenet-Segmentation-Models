@@ -41,7 +41,9 @@ GLOBAL - CHANGE HERE
 ''' 
 
 BACKBONE = 'resnet18'
-wandb.init(project='external_parameter_loss_diceloss(beta_1)')
+wandb.init(project='external_parameter_loss')
+config = wandb.config
+config.project_description = 'diceloss(beta_1)'
 model_name = 'external_parameter_loss_diceloss(beta_1)'
 augment = False
 

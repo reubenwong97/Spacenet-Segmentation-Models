@@ -41,7 +41,9 @@ GLOBAL - CHANGE HERE
 ''' 
 
 BACKBONE = 'resnet18'
-wandb.init(project='external_parameter_loss_binaryfocalloss(gamma_1)')
+wandb.init(project='external_parameter_loss')
+config = wandb.config
+config.project_description = 'binaryfocalloss(gamma_1)'
 model_name = 'external_parameter_loss_binaryfocalloss(gamma_1)'
 augment = False
 

@@ -41,8 +41,10 @@ GLOBAL - CHANGE HERE
 ''' 
 
 BACKBONE = 'resnet18'
-wandb.init(project='augmentation_trial_1')
-model_name = 'augmentation_trial_1'
+wandb.init(project='augmentation_trial')
+config = wandb.config
+config.project_description = 'flip_lr'
+model_name = 'augmentation_trial_flip_lr'
 augment = True
 
 
