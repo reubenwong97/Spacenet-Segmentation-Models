@@ -43,11 +43,11 @@ GLOBAL - CHANGE HERE
 BACKBONE = 'resnet18' # from architecture_trial_resnet
 wandb.init(project='external_parameter_learningrate')
 config = wandb.config
-config.project_description = 'learningrate_10e-5'
-model_name = 'external_parameter_learningrate_10e-5'
+config.project_description = 'learningrate_10e-7'
+model_name = 'external_parameter_learningrate_10e-7'
 augment = False
 
-learning_rate = 10e-5
+learning_rate = 10e-7
 loss = sm.losses.JaccardLoss()  # from external_parameter_loss
 optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate) # from external_parameter_optimizer
 
