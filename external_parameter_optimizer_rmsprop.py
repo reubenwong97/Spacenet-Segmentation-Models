@@ -43,12 +43,12 @@ GLOBAL - CHANGE HERE
 BACKBONE = 'resnet18' # from architecture_trial_resnet
 wandb.init(project='external_parameter_optimizer')
 config = wandb.config
-config.project_description = 'sgd'
-model_name = 'external_parameter_optimizer_sgd'
+config.project_description = 'rmsprop'
+model_name = 'external_parameter_optimizer_rmsprop'
 augment = False
 
 loss = sm.losses.  # from external_parameter_loss
-optimizer = tf.keras.optimizers.SGD()
+optimizer = tf.keras.optimizers.RMSprop()
 
 
 '''

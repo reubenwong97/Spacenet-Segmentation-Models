@@ -40,14 +40,14 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet18'
+BACKBONE = 'resnet18' # from architecture_trial_resnet
 wandb.init(project='external_parameter_loss')
 config = wandb.config
-config.project_description = 'binaryfocalloss(gamma_4)'
-model_name = 'external_parameter_loss_binaryfocalloss(gamma_4)'
+config.project_description = 'binaryfocalloss(gamma_2)'
+model_name = 'external_parameter_loss_binaryfocalloss(gamma_2)'
 augment = False
 
-loss = sm.losses.BinaryFocalLoss(gamma=4)
+loss = sm.losses.BinaryFocalLoss(gamma=2)
 
 
 '''

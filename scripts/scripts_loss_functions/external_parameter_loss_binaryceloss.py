@@ -40,14 +40,14 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet18'
+BACKBONE = 'resnet18' # from architecture_trial_resnet
 wandb.init(project='external_parameter_loss')
 config = wandb.config
-config.project_description = 'diceloss(beta_1)'
-model_name = 'external_parameter_loss_diceloss(beta_1)'
+config.project_description = 'binaryceloss'
+model_name = 'external_parameter_loss_binaryceloss'
 augment = False
 
-loss = sm.losses.DiceLoss(beta=1)
+loss = sm.losses.BinaryCELoss()
 
 
 '''
