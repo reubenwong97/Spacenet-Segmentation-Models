@@ -47,7 +47,7 @@ config.project_description = 'sgd_nesterov'
 model_name = 'external_parameter_optimizer_sgd_nesterov'
 augment = False
 
-loss = sm.losses.  # from external_parameter_loss
+loss = sm.losses.JaccardLoss()  # from external_parameter_loss
 optimizer = tf.keras.optimizers.SGD(nesterov=True)
 
 

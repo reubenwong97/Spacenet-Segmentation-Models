@@ -47,7 +47,7 @@ config.project_description = 'adagrad'
 model_name = 'external_parameter_optimizer_adagrad'
 augment = False
 
-loss = sm.losses.  # from external_parameter_loss
+loss = sm.losses.JaccardLoss()  # from external_parameter_loss
 optimizer = tf.keras.optimizers.Adagrad()
 
 
