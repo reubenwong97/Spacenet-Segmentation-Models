@@ -1,401 +1,0 @@
-
-CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
-To initialize your shell, run
-
-    $ conda init <SHELL_NAME>
-
-Currently supported shells are:
-  - bash
-  - fish
-  - tcsh
-  - xonsh
-  - zsh
-  - powershell
-
-See 'conda init --help' for more information and options.
-
-IMPORTANT: You may need to close and restart your shell after running 'conda init'.
-
-
-2020-11-19 07:09:06.597034: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory
-2020-11-19 07:09:06.597896: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory
-2020-11-19 07:09:06.597907: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
-Using TensorFlow backend.
-wandb: WARNING Keras version 2.3.1 is not fully supported. Required keras >= 2.4.0
-wandb: Currently logged in as: reubenwong97 (use `wandb login --relogin` to force relogin)
-wandb: wandb version 0.10.11 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.10.10
-wandb: Syncing run breezy-flower-2
-wandb: ⭐️ View project at https://wandb.ai/reubenwong97/architecture_trial_efficientnetb0_datagen
-wandb: 🚀 View run at https://wandb.ai/reubenwong97/architecture_trial_efficientnetb0_datagen/runs/2r89o1hu
-wandb: Run data is saved locally in /home/UG/wong1109/spacenet_6/wandb/run-20201119_071004-2r89o1hu
-wandb: Run `wandb off` to turn off syncing.
-2020-11-19 07:10:10.452589: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
-2020-11-19 07:10:10.486940: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
-pciBusID: 0000:d8:00.0 name: Tesla V100-PCIE-32GB computeCapability: 7.0
-coreClock: 1.38GHz coreCount: 80 deviceMemorySize: 31.75GiB deviceMemoryBandwidth: 836.37GiB/s
-2020-11-19 07:10:10.538087: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-11-19 07:10:10.600257: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-11-19 07:10:10.638647: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-11-19 07:10:10.726422: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-11-19 07:10:10.783890: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-11-19 07:10:10.838844: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-11-19 07:10:10.888885: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-11-19 07:10:10.891878: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
-2020-11-19 07:10:10.892658: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
-2020-11-19 07:10:10.900600: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2600000000 Hz
-2020-11-19 07:10:10.900979: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x555559706de0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
-2020-11-19 07:10:10.900996: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
-2020-11-19 07:10:11.057664: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55555978d5b0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2020-11-19 07:10:11.057698: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla V100-PCIE-32GB, Compute Capability 7.0
-2020-11-19 07:10:11.059301: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1555] Found device 0 with properties: 
-pciBusID: 0000:d8:00.0 name: Tesla V100-PCIE-32GB computeCapability: 7.0
-coreClock: 1.38GHz coreCount: 80 deviceMemorySize: 31.75GiB deviceMemoryBandwidth: 836.37GiB/s
-2020-11-19 07:10:11.059360: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-11-19 07:10:11.059370: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-2020-11-19 07:10:11.059379: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
-2020-11-19 07:10:11.059387: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
-2020-11-19 07:10:11.059396: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
-2020-11-19 07:10:11.059404: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
-2020-11-19 07:10:11.059413: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-11-19 07:10:11.062299: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1697] Adding visible gpu devices: 0
-2020-11-19 07:10:11.062367: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
-2020-11-19 07:10:11.064476: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1096] Device interconnect StreamExecutor with strength 1 edge matrix:
-2020-11-19 07:10:11.064497: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102]      0 
-2020-11-19 07:10:11.064506: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] 0:   N 
-2020-11-19 07:10:11.067537: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1241] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30583 MB memory) -> physical GPU (device: 0, name: Tesla V100-PCIE-32GB, pci bus id: 0000:d8:00.0, compute capability: 7.0)
-Training:   0%|          | 0/100 [00:00<?, ?it/s]
-Epoch: 0:   0%|          | 0/105 [00:00<?, ?it/s][A2020-11-19 07:10:25.054731: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
-2020-11-19 07:10:26.693062: W tensorflow/stream_executor/gpu/redzone_allocator.cc:312] Not found: ./bin/ptxas not found
-Relying on driver to perform ptx compilation. This message will be only logged once.
-2020-11-19 07:10:26.861370: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
-
-Epoch: 0 - loss: 0.042, iou_score: 0.339, val_loss: 0.068, val_iou_score: 0.387: 100%|██████████| 105/105 [02:12<00:00,  1.26s/it][AEpoch: 0 - loss: 0.042, iou_score: 0.339, val_loss: 0.068, val_iou_score: 0.387: 100%|██████████| 105/105 [02:12<00:00,  1.26s/it]
-Training:   1%|          | 1/100 [02:12<3:38:04, 132.17s/it]
-Epoch: 1:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 1 - loss: 0.022, iou_score: 0.521, val_loss: 0.023, val_iou_score: 0.526: 100%|██████████| 105/105 [01:37<00:00,  1.08it/s][AEpoch: 1 - loss: 0.022, iou_score: 0.521, val_loss: 0.023, val_iou_score: 0.526: 100%|██████████| 105/105 [01:37<00:00,  1.08it/s]
-Training:   2%|▏         | 2/100 [03:51<3:19:51, 122.36s/it]
-Epoch: 2:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 2 - loss: 0.018, iou_score: 0.585, val_loss: 0.020, val_iou_score: 0.611: 100%|██████████| 105/105 [01:37<00:00,  1.07it/s][AEpoch: 2 - loss: 0.018, iou_score: 0.585, val_loss: 0.020, val_iou_score: 0.611: 100%|██████████| 105/105 [01:37<00:00,  1.07it/s]
-Training:   3%|▎         | 3/100 [05:31<3:06:42, 115.49s/it]
-Epoch: 3:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 3 - loss: 0.016, iou_score: 0.622, val_loss: 0.020, val_iou_score: 0.632: 100%|██████████| 105/105 [01:36<00:00,  1.08it/s][AEpoch: 3 - loss: 0.016, iou_score: 0.622, val_loss: 0.020, val_iou_score: 0.632: 100%|██████████| 105/105 [01:36<00:00,  1.08it/s]
-Training:   4%|▍         | 4/100 [07:10<2:57:04, 110.67s/it]
-Epoch: 4:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 4 - loss: 0.014, iou_score: 0.655, val_loss: 0.017, val_iou_score: 0.671: 100%|██████████| 105/105 [01:36<00:00,  1.09it/s][AEpoch: 4 - loss: 0.014, iou_score: 0.655, val_loss: 0.017, val_iou_score: 0.671: 100%|██████████| 105/105 [01:36<00:00,  1.09it/s]
-Training:   5%|▌         | 5/100 [08:49<2:49:28, 107.04s/it]
-Epoch: 5:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 5 - loss: 0.013, iou_score: 0.681, val_loss: 0.017, val_iou_score: 0.688: 100%|██████████| 105/105 [01:37<00:00,  1.07it/s][AEpoch: 5 - loss: 0.013, iou_score: 0.681, val_loss: 0.017, val_iou_score: 0.688: 100%|██████████| 105/105 [01:37<00:00,  1.07it/s]
-Training:   6%|▌         | 6/100 [10:29<2:44:20, 104.90s/it]
-Epoch: 6:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 6 - loss: 0.012, iou_score: 0.701, val_loss: 0.016, val_iou_score: 0.699: 100%|██████████| 105/105 [01:37<00:00,  1.08it/s][AEpoch: 6 - loss: 0.012, iou_score: 0.701, val_loss: 0.016, val_iou_score: 0.699: 100%|██████████| 105/105 [01:37<00:00,  1.08it/s]
-Training:   7%|▋         | 7/100 [12:06<2:39:18, 102.78s/it]
-Epoch: 7:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 7 - loss: 0.011, iou_score: 0.717, val_loss: 0.016, val_iou_score: 0.679: 100%|██████████| 105/105 [01:36<00:00,  1.08it/s][AEpoch: 7 - loss: 0.011, iou_score: 0.717, val_loss: 0.016, val_iou_score: 0.679: 100%|██████████| 105/105 [01:36<00:00,  1.08it/s]
-Training:   8%|▊         | 8/100 [13:46<2:36:05, 101.79s/it]
-Epoch: 8:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 8 - loss: 0.011, iou_score: 0.731, val_loss: 0.015, val_iou_score: 0.712: 100%|██████████| 105/105 [01:37<00:00,  1.08it/s][AEpoch: 8 - loss: 0.011, iou_score: 0.731, val_loss: 0.015, val_iou_score: 0.712: 100%|██████████| 105/105 [01:37<00:00,  1.08it/s]
-Training:   9%|▉         | 9/100 [15:23<2:32:28, 100.53s/it]
-Epoch: 9:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 9 - loss: 0.014, iou_score: 0.682, val_loss: 0.035, val_iou_score: 0.584: 100%|██████████| 105/105 [01:36<00:00,  1.08it/s][AEpoch: 9 - loss: 0.014, iou_score: 0.682, val_loss: 0.035, val_iou_score: 0.584: 100%|██████████| 105/105 [01:36<00:00,  1.08it/s]
-Training:  10%|█         | 10/100 [17:02<2:29:53, 99.93s/it]
-Epoch: 10:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 10 - loss: 0.013, iou_score: 0.690, val_loss: 0.016, val_iou_score: 0.723: 100%|██████████| 105/105 [01:37<00:00,  1.08it/s][AEpoch: 10 - loss: 0.013, iou_score: 0.690, val_loss: 0.016, val_iou_score: 0.723: 100%|██████████| 105/105 [01:37<00:00,  1.08it/s]
-Training:  11%|█         | 11/100 [18:40<2:27:11, 99.23s/it]
-Epoch: 11:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 11 - loss: 0.010, iou_score: 0.743, val_loss: 0.014, val_iou_score: 0.713: 100%|██████████| 105/105 [01:37<00:00,  1.08it/s][AEpoch: 11 - loss: 0.010, iou_score: 0.743, val_loss: 0.014, val_iou_score: 0.713: 100%|██████████| 105/105 [01:37<00:00,  1.08it/s]
-Training:  12%|█▏        | 12/100 [20:17<2:24:40, 98.64s/it]
-Epoch: 12:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 12 - loss: 0.009, iou_score: 0.769, val_loss: 0.015, val_iou_score: 0.745: 100%|██████████| 105/105 [01:35<00:00,  1.10it/s][AEpoch: 12 - loss: 0.009, iou_score: 0.769, val_loss: 0.015, val_iou_score: 0.745: 100%|██████████| 105/105 [01:35<00:00,  1.10it/s]
-Training:  13%|█▎        | 13/100 [21:54<2:22:25, 98.23s/it]
-Epoch: 13:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 13 - loss: 0.008, iou_score: 0.779, val_loss: 0.015, val_iou_score: 0.764: 100%|██████████| 105/105 [01:35<00:00,  1.11it/s][AEpoch: 13 - loss: 0.008, iou_score: 0.779, val_loss: 0.015, val_iou_score: 0.764: 100%|██████████| 105/105 [01:35<00:00,  1.11it/s]
-Training:  14%|█▍        | 14/100 [23:29<2:19:30, 97.33s/it]
-Epoch: 14:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 14 - loss: 0.008, iou_score: 0.787, val_loss: 0.014, val_iou_score: 0.762: 100%|██████████| 105/105 [01:35<00:00,  1.10it/s][AEpoch: 14 - loss: 0.008, iou_score: 0.787, val_loss: 0.014, val_iou_score: 0.762: 100%|██████████| 105/105 [01:35<00:00,  1.10it/s]
-Training:  15%|█▌        | 15/100 [25:05<2:17:08, 96.81s/it]
-Epoch: 15:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 15 - loss: 0.007, iou_score: 0.803, val_loss: 0.014, val_iou_score: 0.761: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 15 - loss: 0.007, iou_score: 0.803, val_loss: 0.014, val_iou_score: 0.761: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  16%|█▌        | 16/100 [26:42<2:15:34, 96.84s/it]
-Epoch: 16:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 16 - loss: 0.007, iou_score: 0.814, val_loss: 0.014, val_iou_score: 0.773: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 16 - loss: 0.007, iou_score: 0.814, val_loss: 0.014, val_iou_score: 0.773: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  17%|█▋        | 17/100 [28:19<2:14:01, 96.89s/it]
-Epoch: 17:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 17 - loss: 0.007, iou_score: 0.823, val_loss: 0.014, val_iou_score: 0.776: 100%|██████████| 105/105 [01:35<00:00,  1.10it/s][AEpoch: 17 - loss: 0.007, iou_score: 0.823, val_loss: 0.014, val_iou_score: 0.776: 100%|██████████| 105/105 [01:35<00:00,  1.10it/s]
-Training:  18%|█▊        | 18/100 [29:57<2:12:47, 97.17s/it]
-Epoch: 18:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 18 - loss: 0.006, iou_score: 0.827, val_loss: 0.014, val_iou_score: 0.782: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 18 - loss: 0.006, iou_score: 0.827, val_loss: 0.014, val_iou_score: 0.782: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  19%|█▉        | 19/100 [31:31<2:09:57, 96.26s/it]
-Epoch: 19:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 19 - loss: 0.006, iou_score: 0.836, val_loss: 0.013, val_iou_score: 0.771: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 19 - loss: 0.006, iou_score: 0.836, val_loss: 0.013, val_iou_score: 0.771: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  20%|██        | 20/100 [33:05<2:07:39, 95.75s/it]
-Epoch: 20:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 20 - loss: 0.006, iou_score: 0.838, val_loss: 0.014, val_iou_score: 0.787: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 20 - loss: 0.006, iou_score: 0.838, val_loss: 0.014, val_iou_score: 0.787: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  21%|██        | 21/100 [34:42<2:06:29, 96.07s/it]
-Epoch: 21:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 21 - loss: 0.006, iou_score: 0.839, val_loss: 0.014, val_iou_score: 0.773: 100%|██████████| 105/105 [01:34<00:00,  1.12it/s][AEpoch: 21 - loss: 0.006, iou_score: 0.839, val_loss: 0.014, val_iou_score: 0.773: 100%|██████████| 105/105 [01:34<00:00,  1.12it/s]
-Training:  22%|██▏       | 22/100 [36:16<2:04:09, 95.51s/it]
-Epoch: 22:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 22 - loss: 0.006, iou_score: 0.837, val_loss: 0.016, val_iou_score: 0.767: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 22 - loss: 0.006, iou_score: 0.837, val_loss: 0.016, val_iou_score: 0.767: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  23%|██▎       | 23/100 [37:51<2:02:10, 95.20s/it]
-Epoch: 23:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 23 - loss: 0.007, iou_score: 0.827, val_loss: 0.014, val_iou_score: 0.785: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 23 - loss: 0.007, iou_score: 0.827, val_loss: 0.014, val_iou_score: 0.785: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  24%|██▍       | 24/100 [39:26<2:00:28, 95.11s/it]
-Epoch: 24:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 24 - loss: 0.006, iou_score: 0.846, val_loss: 0.015, val_iou_score: 0.796: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 24 - loss: 0.006, iou_score: 0.846, val_loss: 0.015, val_iou_score: 0.796: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  25%|██▌       | 25/100 [41:00<1:58:38, 94.91s/it]
-Epoch: 25:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 25 - loss: 0.005, iou_score: 0.855, val_loss: 0.014, val_iou_score: 0.804: 100%|██████████| 105/105 [01:34<00:00,  1.12it/s][AEpoch: 25 - loss: 0.005, iou_score: 0.855, val_loss: 0.014, val_iou_score: 0.804: 100%|██████████| 105/105 [01:34<00:00,  1.12it/s]
-Training:  26%|██▌       | 26/100 [42:34<1:56:49, 94.72s/it]
-Epoch: 26:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 26 - loss: 0.005, iou_score: 0.861, val_loss: 0.014, val_iou_score: 0.797: 100%|██████████| 105/105 [01:35<00:00,  1.10it/s][AEpoch: 26 - loss: 0.005, iou_score: 0.861, val_loss: 0.014, val_iou_score: 0.797: 100%|██████████| 105/105 [01:35<00:00,  1.10it/s]
-Training:  27%|██▋       | 27/100 [44:10<1:55:30, 94.94s/it]
-Epoch: 27:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 27 - loss: 0.005, iou_score: 0.867, val_loss: 0.015, val_iou_score: 0.808: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 27 - loss: 0.005, iou_score: 0.867, val_loss: 0.015, val_iou_score: 0.808: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  28%|██▊       | 28/100 [45:44<1:53:36, 94.68s/it]
-Epoch: 28:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 28 - loss: 0.005, iou_score: 0.872, val_loss: 0.014, val_iou_score: 0.808: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 28 - loss: 0.005, iou_score: 0.872, val_loss: 0.014, val_iou_score: 0.808: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  29%|██▉       | 29/100 [47:18<1:51:57, 94.61s/it]
-Epoch: 29:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 29 - loss: 0.005, iou_score: 0.877, val_loss: 0.015, val_iou_score: 0.813: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 29 - loss: 0.005, iou_score: 0.877, val_loss: 0.015, val_iou_score: 0.813: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  30%|███       | 30/100 [48:53<1:50:27, 94.68s/it]
-Epoch: 30:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 30 - loss: 0.012, iou_score: 0.730, val_loss: 0.024, val_iou_score: 0.619: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 30 - loss: 0.012, iou_score: 0.730, val_loss: 0.024, val_iou_score: 0.619: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  31%|███       | 31/100 [50:27<1:48:34, 94.41s/it]
-Epoch: 31:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 31 - loss: 0.011, iou_score: 0.740, val_loss: 0.016, val_iou_score: 0.722: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 31 - loss: 0.011, iou_score: 0.740, val_loss: 0.016, val_iou_score: 0.722: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  32%|███▏      | 32/100 [52:01<1:46:52, 94.30s/it]
-Epoch: 32:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 32 - loss: 0.007, iou_score: 0.808, val_loss: 0.013, val_iou_score: 0.767: 100%|██████████| 105/105 [01:35<00:00,  1.10it/s][AEpoch: 32 - loss: 0.007, iou_score: 0.808, val_loss: 0.013, val_iou_score: 0.767: 100%|██████████| 105/105 [01:35<00:00,  1.10it/s]
-Training:  33%|███▎      | 33/100 [53:37<1:45:43, 94.68s/it]
-Epoch: 33:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 33 - loss: 0.006, iou_score: 0.841, val_loss: 0.013, val_iou_score: 0.784: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 33 - loss: 0.006, iou_score: 0.841, val_loss: 0.013, val_iou_score: 0.784: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  34%|███▍      | 34/100 [55:16<1:45:38, 96.04s/it]
-Epoch: 34:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 34 - loss: 0.005, iou_score: 0.854, val_loss: 0.014, val_iou_score: 0.800: 100%|██████████| 105/105 [01:34<00:00,  1.12it/s][AEpoch: 34 - loss: 0.005, iou_score: 0.854, val_loss: 0.014, val_iou_score: 0.800: 100%|██████████| 105/105 [01:34<00:00,  1.12it/s]
-Training:  35%|███▌      | 35/100 [56:52<1:44:06, 96.09s/it]
-Epoch: 35:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 35 - loss: 0.005, iou_score: 0.858, val_loss: 0.015, val_iou_score: 0.806: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 35 - loss: 0.005, iou_score: 0.858, val_loss: 0.015, val_iou_score: 0.806: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  36%|███▌      | 36/100 [58:27<1:42:07, 95.74s/it]
-Epoch: 36:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 36 - loss: 0.005, iou_score: 0.867, val_loss: 0.016, val_iou_score: 0.811: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 36 - loss: 0.005, iou_score: 0.867, val_loss: 0.016, val_iou_score: 0.811: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  37%|███▋      | 37/100 [1:00:00<1:39:34, 94.83s/it]
-Epoch: 37:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 37 - loss: 0.005, iou_score: 0.874, val_loss: 0.015, val_iou_score: 0.817: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 37 - loss: 0.005, iou_score: 0.874, val_loss: 0.015, val_iou_score: 0.817: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  38%|███▊      | 38/100 [1:01:32<1:37:17, 94.15s/it]
-Epoch: 38:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 38 - loss: 0.004, iou_score: 0.878, val_loss: 0.016, val_iou_score: 0.821: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 38 - loss: 0.004, iou_score: 0.878, val_loss: 0.016, val_iou_score: 0.821: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  39%|███▉      | 39/100 [1:03:05<1:35:19, 93.76s/it]
-Epoch: 39:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 39 - loss: 0.005, iou_score: 0.874, val_loss: 0.019, val_iou_score: 0.784: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 39 - loss: 0.005, iou_score: 0.874, val_loss: 0.019, val_iou_score: 0.784: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  40%|████      | 40/100 [1:04:38<1:33:23, 93.39s/it]
-Epoch: 40:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 40 - loss: 0.005, iou_score: 0.853, val_loss: 0.016, val_iou_score: 0.810: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 40 - loss: 0.005, iou_score: 0.853, val_loss: 0.016, val_iou_score: 0.810: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  41%|████      | 41/100 [1:06:10<1:31:29, 93.03s/it]
-Epoch: 41:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 41 - loss: 0.005, iou_score: 0.867, val_loss: 0.015, val_iou_score: 0.818: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s][AEpoch: 41 - loss: 0.005, iou_score: 0.867, val_loss: 0.015, val_iou_score: 0.818: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s]
-Training:  42%|████▏     | 42/100 [1:07:42<1:29:37, 92.71s/it]
-Epoch: 42:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 42 - loss: 0.004, iou_score: 0.881, val_loss: 0.014, val_iou_score: 0.820: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s][AEpoch: 42 - loss: 0.004, iou_score: 0.881, val_loss: 0.014, val_iou_score: 0.820: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s]
-Training:  43%|████▎     | 43/100 [1:09:14<1:27:54, 92.53s/it]
-Epoch: 43:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 43 - loss: 0.004, iou_score: 0.889, val_loss: 0.015, val_iou_score: 0.828: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 43 - loss: 0.004, iou_score: 0.889, val_loss: 0.015, val_iou_score: 0.828: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  44%|████▍     | 44/100 [1:10:46<1:26:09, 92.31s/it]
-Epoch: 44:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 44 - loss: 0.004, iou_score: 0.892, val_loss: 0.014, val_iou_score: 0.824: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s][AEpoch: 44 - loss: 0.004, iou_score: 0.892, val_loss: 0.014, val_iou_score: 0.824: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s]
-Training:  45%|████▌     | 45/100 [1:12:18<1:24:33, 92.24s/it]
-Epoch: 45:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 45 - loss: 0.004, iou_score: 0.896, val_loss: 0.015, val_iou_score: 0.826: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 45 - loss: 0.004, iou_score: 0.896, val_loss: 0.015, val_iou_score: 0.826: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  46%|████▌     | 46/100 [1:13:49<1:22:51, 92.07s/it]
-Epoch: 46:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 46 - loss: 0.004, iou_score: 0.898, val_loss: 0.017, val_iou_score: 0.833: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 46 - loss: 0.004, iou_score: 0.898, val_loss: 0.017, val_iou_score: 0.833: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  47%|████▋     | 47/100 [1:15:21<1:21:12, 91.94s/it]
-Epoch: 47:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 47 - loss: 0.004, iou_score: 0.898, val_loss: 0.015, val_iou_score: 0.825: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 47 - loss: 0.004, iou_score: 0.898, val_loss: 0.015, val_iou_score: 0.825: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  48%|████▊     | 48/100 [1:16:53<1:19:39, 91.92s/it]
-Epoch: 48:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 48 - loss: 0.004, iou_score: 0.899, val_loss: 0.018, val_iou_score: 0.832: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 48 - loss: 0.004, iou_score: 0.899, val_loss: 0.018, val_iou_score: 0.832: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  49%|████▉     | 49/100 [1:18:25<1:18:05, 91.88s/it]
-Epoch: 49:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 49 - loss: 0.004, iou_score: 0.902, val_loss: 0.016, val_iou_score: 0.830: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 49 - loss: 0.004, iou_score: 0.902, val_loss: 0.016, val_iou_score: 0.830: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  50%|█████     | 50/100 [1:19:57<1:16:33, 91.87s/it]
-Epoch: 50:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 50 - loss: 0.003, iou_score: 0.902, val_loss: 0.017, val_iou_score: 0.833: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 50 - loss: 0.003, iou_score: 0.902, val_loss: 0.017, val_iou_score: 0.833: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  51%|█████     | 51/100 [1:21:28<1:15:00, 91.85s/it]
-Epoch: 51:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 51 - loss: 0.003, iou_score: 0.904, val_loss: 0.015, val_iou_score: 0.832: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s][AEpoch: 51 - loss: 0.003, iou_score: 0.904, val_loss: 0.015, val_iou_score: 0.832: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s]
-Training:  52%|█████▏    | 52/100 [1:23:01<1:13:32, 91.93s/it]
-Epoch: 52:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 52 - loss: 0.003, iou_score: 0.905, val_loss: 0.016, val_iou_score: 0.830: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 52 - loss: 0.003, iou_score: 0.905, val_loss: 0.016, val_iou_score: 0.830: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  53%|█████▎    | 53/100 [1:24:32<1:12:00, 91.92s/it]
-Epoch: 53:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 53 - loss: 0.003, iou_score: 0.907, val_loss: 0.016, val_iou_score: 0.833: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 53 - loss: 0.003, iou_score: 0.907, val_loss: 0.016, val_iou_score: 0.833: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  54%|█████▍    | 54/100 [1:26:04<1:10:26, 91.89s/it]
-Epoch: 54:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 54 - loss: 0.003, iou_score: 0.907, val_loss: 0.016, val_iou_score: 0.834: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 54 - loss: 0.003, iou_score: 0.907, val_loss: 0.016, val_iou_score: 0.834: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  55%|█████▌    | 55/100 [1:27:36<1:08:51, 91.82s/it]
-Epoch: 55:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 55 - loss: 0.003, iou_score: 0.909, val_loss: 0.016, val_iou_score: 0.831: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 55 - loss: 0.003, iou_score: 0.909, val_loss: 0.016, val_iou_score: 0.831: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  56%|█████▌    | 56/100 [1:29:08<1:07:19, 91.82s/it]
-Epoch: 56:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 56 - loss: 0.003, iou_score: 0.910, val_loss: 0.016, val_iou_score: 0.832: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s][AEpoch: 56 - loss: 0.003, iou_score: 0.910, val_loss: 0.016, val_iou_score: 0.832: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s]
-Training:  57%|█████▋    | 57/100 [1:30:40<1:05:51, 91.89s/it]
-Epoch: 57:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 57 - loss: 0.006, iou_score: 0.856, val_loss: 0.033, val_iou_score: 0.684: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s][AEpoch: 57 - loss: 0.006, iou_score: 0.856, val_loss: 0.033, val_iou_score: 0.684: 100%|██████████| 105/105 [01:31<00:00,  1.15it/s]
-Training:  58%|█████▊    | 58/100 [1:32:12<1:04:19, 91.89s/it]
-Epoch: 58:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 58 - loss: 0.009, iou_score: 0.781, val_loss: 0.016, val_iou_score: 0.776: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 58 - loss: 0.009, iou_score: 0.781, val_loss: 0.016, val_iou_score: 0.776: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  59%|█████▉    | 59/100 [1:33:44<1:02:51, 92.00s/it]
-Epoch: 59:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 59 - loss: 0.005, iou_score: 0.865, val_loss: 0.015, val_iou_score: 0.817: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s][AEpoch: 59 - loss: 0.005, iou_score: 0.865, val_loss: 0.015, val_iou_score: 0.817: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s]
-Training:  60%|██████    | 60/100 [1:35:16<1:01:20, 92.01s/it]
-Epoch: 60:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 60 - loss: 0.004, iou_score: 0.891, val_loss: 0.015, val_iou_score: 0.827: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 60 - loss: 0.004, iou_score: 0.891, val_loss: 0.015, val_iou_score: 0.827: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  61%|██████    | 61/100 [1:36:48<59:51, 92.09s/it]  
-Epoch: 61:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 61 - loss: 0.004, iou_score: 0.902, val_loss: 0.016, val_iou_score: 0.830: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 61 - loss: 0.004, iou_score: 0.902, val_loss: 0.016, val_iou_score: 0.830: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  62%|██████▏   | 62/100 [1:38:21<58:25, 92.25s/it]
-Epoch: 62:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 62 - loss: 0.003, iou_score: 0.907, val_loss: 0.017, val_iou_score: 0.836: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 62 - loss: 0.003, iou_score: 0.907, val_loss: 0.017, val_iou_score: 0.836: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  63%|██████▎   | 63/100 [1:39:53<56:54, 92.28s/it]
-Epoch: 63:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 63 - loss: 0.003, iou_score: 0.909, val_loss: 0.016, val_iou_score: 0.834: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 63 - loss: 0.003, iou_score: 0.909, val_loss: 0.016, val_iou_score: 0.834: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  64%|██████▍   | 64/100 [1:41:26<55:22, 92.29s/it]
-Epoch: 64:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 64 - loss: 0.003, iou_score: 0.912, val_loss: 0.017, val_iou_score: 0.838: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s][AEpoch: 64 - loss: 0.003, iou_score: 0.912, val_loss: 0.017, val_iou_score: 0.838: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s]
-Training:  65%|██████▌   | 65/100 [1:42:58<53:48, 92.24s/it]
-Epoch: 65:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 65 - loss: 0.003, iou_score: 0.916, val_loss: 0.016, val_iou_score: 0.838: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 65 - loss: 0.003, iou_score: 0.916, val_loss: 0.016, val_iou_score: 0.838: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  66%|██████▌   | 66/100 [1:44:30<52:21, 92.39s/it]
-Epoch: 66:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 66 - loss: 0.003, iou_score: 0.916, val_loss: 0.017, val_iou_score: 0.837: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s][AEpoch: 66 - loss: 0.003, iou_score: 0.916, val_loss: 0.017, val_iou_score: 0.837: 100%|██████████| 105/105 [01:31<00:00,  1.14it/s]
-Training:  67%|██████▋   | 67/100 [1:46:02<50:45, 92.30s/it]
-Epoch: 67:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 67 - loss: 0.003, iou_score: 0.918, val_loss: 0.017, val_iou_score: 0.837: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 67 - loss: 0.003, iou_score: 0.918, val_loss: 0.017, val_iou_score: 0.837: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  68%|██████▊   | 68/100 [1:47:35<49:17, 92.42s/it]
-Epoch: 68:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 68 - loss: 0.003, iou_score: 0.919, val_loss: 0.017, val_iou_score: 0.841: 100%|██████████| 105/105 [01:33<00:00,  1.13it/s][AEpoch: 68 - loss: 0.003, iou_score: 0.919, val_loss: 0.017, val_iou_score: 0.841: 100%|██████████| 105/105 [01:33<00:00,  1.13it/s]
-Training:  69%|██████▉   | 69/100 [1:49:08<47:52, 92.65s/it]
-Epoch: 69:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 69 - loss: 0.003, iou_score: 0.919, val_loss: 0.017, val_iou_score: 0.837: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 69 - loss: 0.003, iou_score: 0.919, val_loss: 0.017, val_iou_score: 0.837: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  70%|███████   | 70/100 [1:50:41<46:22, 92.74s/it]
-Epoch: 70:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 70 - loss: 0.003, iou_score: 0.921, val_loss: 0.017, val_iou_score: 0.838: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 70 - loss: 0.003, iou_score: 0.921, val_loss: 0.017, val_iou_score: 0.838: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  71%|███████   | 71/100 [1:52:14<44:50, 92.78s/it]
-Epoch: 71:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 71 - loss: 0.003, iou_score: 0.920, val_loss: 0.018, val_iou_score: 0.842: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 71 - loss: 0.003, iou_score: 0.920, val_loss: 0.018, val_iou_score: 0.842: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  72%|███████▏  | 72/100 [1:53:47<43:18, 92.80s/it]
-Epoch: 72:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 72 - loss: 0.003, iou_score: 0.922, val_loss: 0.019, val_iou_score: 0.843: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 72 - loss: 0.003, iou_score: 0.922, val_loss: 0.019, val_iou_score: 0.843: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  73%|███████▎  | 73/100 [1:55:20<41:46, 92.83s/it]
-Epoch: 73:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 73 - loss: 0.003, iou_score: 0.923, val_loss: 0.018, val_iou_score: 0.839: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 73 - loss: 0.003, iou_score: 0.923, val_loss: 0.018, val_iou_score: 0.839: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  74%|███████▍  | 74/100 [1:56:53<40:16, 92.93s/it]
-Epoch: 74:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 74 - loss: 0.003, iou_score: 0.923, val_loss: 0.017, val_iou_score: 0.842: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 74 - loss: 0.003, iou_score: 0.923, val_loss: 0.017, val_iou_score: 0.842: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  75%|███████▌  | 75/100 [1:58:27<38:50, 93.21s/it]
-Epoch: 75:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 75 - loss: 0.003, iou_score: 0.925, val_loss: 0.019, val_iou_score: 0.845: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 75 - loss: 0.003, iou_score: 0.925, val_loss: 0.019, val_iou_score: 0.845: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  76%|███████▌  | 76/100 [2:00:00<37:12, 93.04s/it]
-Epoch: 76:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 76 - loss: 0.003, iou_score: 0.924, val_loss: 0.017, val_iou_score: 0.842: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 76 - loss: 0.003, iou_score: 0.924, val_loss: 0.017, val_iou_score: 0.842: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  77%|███████▋  | 77/100 [2:01:32<35:37, 92.95s/it]
-Epoch: 77:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 77 - loss: 0.003, iou_score: 0.925, val_loss: 0.018, val_iou_score: 0.840: 100%|██████████| 105/105 [01:33<00:00,  1.13it/s][AEpoch: 77 - loss: 0.003, iou_score: 0.925, val_loss: 0.018, val_iou_score: 0.840: 100%|██████████| 105/105 [01:33<00:00,  1.13it/s]
-Training:  78%|███████▊  | 78/100 [2:03:06<34:08, 93.10s/it]
-Epoch: 78:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 78 - loss: 0.003, iou_score: 0.926, val_loss: 0.018, val_iou_score: 0.844: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 78 - loss: 0.003, iou_score: 0.926, val_loss: 0.018, val_iou_score: 0.844: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  79%|███████▉  | 79/100 [2:04:38<32:31, 92.91s/it]
-Epoch: 79:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 79 - loss: 0.003, iou_score: 0.926, val_loss: 0.019, val_iou_score: 0.845: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 79 - loss: 0.003, iou_score: 0.926, val_loss: 0.019, val_iou_score: 0.845: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  80%|████████  | 80/100 [2:06:11<30:59, 92.96s/it]
-Epoch: 80:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 80 - loss: 0.003, iou_score: 0.928, val_loss: 0.019, val_iou_score: 0.846: 100%|██████████| 105/105 [01:34<00:00,  1.12it/s][AEpoch: 80 - loss: 0.003, iou_score: 0.928, val_loss: 0.019, val_iou_score: 0.846: 100%|██████████| 105/105 [01:34<00:00,  1.12it/s]
-Training:  81%|████████  | 81/100 [2:07:46<29:33, 93.36s/it]
-Epoch: 81:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 81 - loss: 0.003, iou_score: 0.928, val_loss: 0.018, val_iou_score: 0.839: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 81 - loss: 0.003, iou_score: 0.928, val_loss: 0.018, val_iou_score: 0.839: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  82%|████████▏ | 82/100 [2:09:18<27:57, 93.20s/it]
-Epoch: 82:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 82 - loss: 0.003, iou_score: 0.927, val_loss: 0.018, val_iou_score: 0.839: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 82 - loss: 0.003, iou_score: 0.927, val_loss: 0.018, val_iou_score: 0.839: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  83%|████████▎ | 83/100 [2:10:51<26:22, 93.06s/it]
-Epoch: 83:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 83 - loss: 0.003, iou_score: 0.928, val_loss: 0.019, val_iou_score: 0.842: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 83 - loss: 0.003, iou_score: 0.928, val_loss: 0.019, val_iou_score: 0.842: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  84%|████████▍ | 84/100 [2:12:24<24:47, 92.96s/it]
-Epoch: 84:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 84 - loss: 0.003, iou_score: 0.927, val_loss: 0.020, val_iou_score: 0.842: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s][AEpoch: 84 - loss: 0.003, iou_score: 0.927, val_loss: 0.020, val_iou_score: 0.842: 100%|██████████| 105/105 [01:32<00:00,  1.14it/s]
-Training:  85%|████████▌ | 85/100 [2:13:56<23:11, 92.79s/it]
-Epoch: 85:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 85 - loss: 0.003, iou_score: 0.929, val_loss: 0.018, val_iou_score: 0.844: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 85 - loss: 0.003, iou_score: 0.929, val_loss: 0.018, val_iou_score: 0.844: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  86%|████████▌ | 86/100 [2:15:29<21:39, 92.84s/it]
-Epoch: 86:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 86 - loss: 0.002, iou_score: 0.929, val_loss: 0.019, val_iou_score: 0.843: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 86 - loss: 0.002, iou_score: 0.929, val_loss: 0.019, val_iou_score: 0.843: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  87%|████████▋ | 87/100 [2:17:03<20:10, 93.15s/it]
-Epoch: 87:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 87 - loss: 0.002, iou_score: 0.930, val_loss: 0.018, val_iou_score: 0.845: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 87 - loss: 0.002, iou_score: 0.930, val_loss: 0.018, val_iou_score: 0.845: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  88%|████████▊ | 88/100 [2:18:36<18:37, 93.15s/it]
-Epoch: 88:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 88 - loss: 0.002, iou_score: 0.931, val_loss: 0.020, val_iou_score: 0.846: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 88 - loss: 0.002, iou_score: 0.931, val_loss: 0.020, val_iou_score: 0.846: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  89%|████████▉ | 89/100 [2:20:09<17:04, 93.13s/it]
-Epoch: 89:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 89 - loss: 0.010, iou_score: 0.785, val_loss: 0.033, val_iou_score: 0.667: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 89 - loss: 0.010, iou_score: 0.785, val_loss: 0.033, val_iou_score: 0.667: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  90%|█████████ | 90/100 [2:21:42<15:31, 93.11s/it]
-Epoch: 90:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 90 - loss: 0.008, iou_score: 0.794, val_loss: 0.013, val_iou_score: 0.784: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 90 - loss: 0.008, iou_score: 0.794, val_loss: 0.013, val_iou_score: 0.784: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  91%|█████████ | 91/100 [2:23:15<13:57, 93.09s/it]
-Epoch: 91:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 91 - loss: 0.004, iou_score: 0.876, val_loss: 0.014, val_iou_score: 0.812: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s][AEpoch: 91 - loss: 0.004, iou_score: 0.876, val_loss: 0.014, val_iou_score: 0.812: 100%|██████████| 105/105 [01:32<00:00,  1.13it/s]
-Training:  92%|█████████▏| 92/100 [2:24:48<12:24, 93.04s/it]
-Epoch: 92:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 92 - loss: 0.004, iou_score: 0.900, val_loss: 0.014, val_iou_score: 0.826: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 92 - loss: 0.004, iou_score: 0.900, val_loss: 0.014, val_iou_score: 0.826: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  93%|█████████▎| 93/100 [2:26:22<10:52, 93.25s/it]
-Epoch: 93:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 93 - loss: 0.003, iou_score: 0.912, val_loss: 0.017, val_iou_score: 0.837: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 93 - loss: 0.003, iou_score: 0.912, val_loss: 0.017, val_iou_score: 0.837: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  94%|█████████▍| 94/100 [2:27:56<09:20, 93.42s/it]
-Epoch: 94:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 94 - loss: 0.003, iou_score: 0.918, val_loss: 0.018, val_iou_score: 0.840: 100%|██████████| 105/105 [01:33<00:00,  1.13it/s][AEpoch: 94 - loss: 0.003, iou_score: 0.918, val_loss: 0.018, val_iou_score: 0.840: 100%|██████████| 105/105 [01:33<00:00,  1.13it/s]
-Training:  95%|█████████▌| 95/100 [2:29:29<07:47, 93.42s/it]
-Epoch: 95:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 95 - loss: 0.003, iou_score: 0.922, val_loss: 0.017, val_iou_score: 0.841: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 95 - loss: 0.003, iou_score: 0.922, val_loss: 0.017, val_iou_score: 0.841: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  96%|█████████▌| 96/100 [2:31:03<06:14, 93.55s/it]
-Epoch: 96:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 96 - loss: 0.003, iou_score: 0.927, val_loss: 0.018, val_iou_score: 0.843: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 96 - loss: 0.003, iou_score: 0.927, val_loss: 0.018, val_iou_score: 0.843: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  97%|█████████▋| 97/100 [2:32:37<04:40, 93.65s/it]
-Epoch: 97:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 97 - loss: 0.003, iou_score: 0.928, val_loss: 0.019, val_iou_score: 0.844: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 97 - loss: 0.003, iou_score: 0.928, val_loss: 0.019, val_iou_score: 0.844: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training:  98%|█████████▊| 98/100 [2:34:11<03:07, 93.80s/it]
-Epoch: 98:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 98 - loss: 0.002, iou_score: 0.930, val_loss: 0.019, val_iou_score: 0.842: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s][AEpoch: 98 - loss: 0.002, iou_score: 0.930, val_loss: 0.019, val_iou_score: 0.842: 100%|██████████| 105/105 [01:34<00:00,  1.11it/s]
-Training:  99%|█████████▉| 99/100 [2:35:46<01:34, 94.15s/it]
-Epoch: 99:   0%|          | 0/105 [00:00<?, ?it/s][A
-Epoch: 99 - loss: 0.002, iou_score: 0.931, val_loss: 0.019, val_iou_score: 0.846: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s][AEpoch: 99 - loss: 0.002, iou_score: 0.931, val_loss: 0.019, val_iou_score: 0.846: 100%|██████████| 105/105 [01:33<00:00,  1.12it/s]
-Training: 100%|██████████| 100/100 [2:37:20<00:00, 94.07s/it]Training: 100%|██████████| 100/100 [2:37:20<00:00, 94.41s/it]wandb: Waiting for W&B process to finish, PID 27658
-wandb: Program ended successfully.
-wandb: - 41.00MB of 41.00MB uploaded (0.00MB deduped)wandb: \ 42.99MB of 42.99MB uploaded (0.00MB deduped)wandb: | 42.99MB of 42.99MB uploaded (0.00MB deduped)wandb:                                                                                
-wandb: Find user logs for this run at: /home/UG/wong1109/spacenet_6/wandb/run-20201119_071004-2r89o1hu/logs/debug.log
-wandb: Find internal logs for this run at: /home/UG/wong1109/spacenet_6/wandb/run-20201119_071004-2r89o1hu/logs/debug-internal.log
-wandb: Run summary:
-wandb:                                     epoch 99
-wandb:                                      loss 0.00242
-wandb:                                 iou_score 0.93118
-wandb:                                  val_loss 0.01921
-wandb:                             val_iou_score 0.84577
-wandb:                                     _step 99
-wandb:                                  _runtime 9452
-wandb:                                _timestamp 1605750456
-wandb:                             best_val_loss 0.01312
-wandb:                                best_epoch 33
-wandb: Run history:
-wandb:           epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
-wandb:            loss █▄▃▃▃▂▂▂▂▂▂▁▃▂▂▁▂▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-wandb:       iou_score ▁▄▅▅▅▆▆▇▇▇▇▇▆▇▇▇▇▇█████▆████████████▇███
-wandb:        val_loss █▂▂▁▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▂▂▂▂▂▂▂▂▁▁▂▂
-wandb:   val_iou_score ▁▄▆▅▆▆▇▇▇▇▇▇▅▇▇█▇██████▇████████████▇███
-wandb:           _step ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
-wandb:        _runtime ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
-wandb:      _timestamp ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
-wandb: 
-wandb: Synced 6 W&B file(s), 1 media file(s), 0 artifact file(s) and 2 other file(s)
-wandb: 
-wandb: Synced breezy-flower-2: https://wandb.ai/reubenwong97/architecture_trial_efficientnetb0_datagen/runs/2r89o1hu
-
