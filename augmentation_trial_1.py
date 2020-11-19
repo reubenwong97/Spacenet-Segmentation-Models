@@ -32,8 +32,8 @@ if gpus:
     except RuntimeError as e:
         # Memory growth must be set before GPUs have been initialized
         print(e)
-
         
+
 ''' 
 ---------------------------------------
 GLOBAL - CHANGE HERE
@@ -41,9 +41,9 @@ GLOBAL - CHANGE HERE
 ''' 
 
 BACKBONE = 'resnet18'
-wandb.init(project='architecture_trial_resnet18_datagen_sgd')
-model_name = 'architecture_trial_resnet18_datagen_sgd'
-augment = False
+wandb.init(project='augmentation_trial_1')
+model_name = 'augmentation_trial_1'
+augment = True
 
 
 '''
@@ -63,7 +63,7 @@ define the model - make sure to set model name
 '''
 model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3))
 model.compile(
-    optimizer='sgd',
+    optimizer='adam',
     loss=sm.losses.BinaryFocalLoss(alpha=0.75, gamma=0.25),
     metrics=[sm.metrics.IOUScore()],
 )
