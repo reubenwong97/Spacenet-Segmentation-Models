@@ -5,8 +5,8 @@ wandb/*
 models/*
 tensorboard/*
 *.hdf5
-*.err
-*.out
+# *.err
+# *.out
 
 # Preserve folder structure
 !data_full/.gitkeep
