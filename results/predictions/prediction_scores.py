@@ -1,7 +1,9 @@
 import numpy as np
+import os
 
-model_names = ['efficientnetb0', 'resnet34', 'resnet50']
+fnames = next(os.walk('.'))[2]
+fnames = [x for x in fnames if x[-4:] == '.npy']
 
-for model_name in model_names:
-    score = np.load('architecture_trial_' + model_name + '_prediction_score.npy', allow_pickle=True)
-    print(f'{model_name}: {score}')
+for fname in fnames:
+    score = np.load(fname, allow_pickle=True)
+    print(f'{fname}: \n{score}\n')
