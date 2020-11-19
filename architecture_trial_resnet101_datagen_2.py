@@ -32,7 +32,7 @@ if gpus:
     except RuntimeError as e:
         # Memory growth must be set before GPUs have been initialized
         print(e)
-        
+
 
 ''' 
 ---------------------------------------
@@ -40,9 +40,9 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet34'
-wandb.init(project='architecture_trial_resnet34_datagen')
-model_name = 'architecture_trial_resnet34_datagen'
+BACKBONE = 'resnet101'
+wandb.init(project='architecture_trial_resnet101_datagen_2')
+model_name = 'architecture_trial_resnet101_datagen_2'
 augment = False
 
 
