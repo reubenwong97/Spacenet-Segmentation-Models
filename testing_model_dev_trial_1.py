@@ -13,7 +13,8 @@ from keras.callbacks import ModelCheckpoint
 import os
 os.environ['SM_FRAMEWORK'] = 'tf.keras'
 SM_FRAMEWORK = os.getenv('SM_FRAMEWORK')
-import segmentation_models as sm
+# import segmentation_models as sm
+import segmentation_models_dev as sm
 sm.set_framework(SM_FRAMEWORK)
 
 import wandb
@@ -41,12 +42,11 @@ GLOBAL - CHANGE HERE
 ''' 
 
 
-wandb.init(project='internal_parameter_')
+wandb.init(project='testing_model_dev')
 config = wandb.config
-config.project_description = ''
-model_name = 'internal_parameter_'
+config.project_description = 'trial_1'
+model_name = 'testing_model_dev_trial_1'
 augment = False
-
 
 
 
@@ -80,7 +80,8 @@ CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5
 
 history = model.fit(
    train_data,
-   epochs=100,
+#    epochs=100,
+   epochs=5,
    validation_data=val_data,
    steps_per_epoch=105,
    validation_steps=45,
