@@ -86,8 +86,7 @@ CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5
 
 history = model.fit(
    train_data,
-#    epochs=100,
-   epochs=3,
+   epochs=100,
    validation_data=val_data,
    steps_per_epoch=105,
    validation_steps=45,

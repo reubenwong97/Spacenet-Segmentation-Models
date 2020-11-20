@@ -42,15 +42,15 @@ GLOBAL - CHANGE HERE
 
 wandb.init(project='internal_parameters_activation')
 config = wandb.config
-config.project_description = 'modified_relu'
-model_name = 'internal_parameters_activation_modified_relu'
+config.project_description = 'modified_sigmoid'
+model_name = 'internal_parameters_activation_modified_sigmoid'
 augment = False
 
 decoder_drop_rate = 0.0
 decoder_use_batchnorm=True
 decoder_use_groupnorm = False
 backbone = 'resnet18_modified'
-encoder_activation = 'relu'
+encoder_activation = 'sigmoid'
 
 
 '''
