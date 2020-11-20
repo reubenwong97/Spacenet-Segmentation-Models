@@ -43,14 +43,14 @@ GLOBAL - CHANGE HERE
 BACKBONE = 'resnet18' # from architecture_trial_resnet
 wandb.init(project='external_parameter_decoderblocktype')
 config = wandb.config
-config.project_description = 'upsampling'
-model_name = 'external_parameter_decoderblocktype_upsampling'
+config.project_description = 'transpose'
+model_name = 'external_parameter_decoderblocktype_transpose'
 augment = False
 
 learning_rate = 10e-4
 loss = sm.losses.JaccardLoss()  # from external_parameter_loss
 optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)  # from external_parameter_optimizer, external_parameter_learningrate
-decoder_block_type = 'upsampling'
+decoder_block_type = 'transpose'
 
 
 '''
