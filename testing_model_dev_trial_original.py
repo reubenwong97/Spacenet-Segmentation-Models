@@ -44,8 +44,8 @@ GLOBAL - CHANGE HERE
 
 wandb.init(project='testing_model_dev')
 config = wandb.config
-config.project_description = 'trial_1'
-model_name = 'testing_model_dev_trial_1'
+config.project_description = 'trial_original'
+model_name = 'testing_model_dev_trial_original'
 augment = False
 
 
