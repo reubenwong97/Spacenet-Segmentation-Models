@@ -12,8 +12,8 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-PYPI_NAME = 'image_classifiers'
-NAME = 'classification_models'
+PYPI_NAME = 'dev_image_classifiers'
+NAME = 'dev_classification_models'
 DESCRIPTION = 'Image classification models. Keras.'
 URL = 'https://github.com/qubvel/classification_models'
 EMAIL = 'qubvel@gmail.com'

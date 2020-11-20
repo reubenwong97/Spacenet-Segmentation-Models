@@ -12,7 +12,7 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'segmentation_models'
+NAME = 'dev_segmentation_models'
 DESCRIPTION = 'Image segmentation models with pre-trained backbones with Keras.'
 URL = 'https://github.com/qubvel/segmentation_models'
 EMAIL = 'qubvel@gmail.com'
