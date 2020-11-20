@@ -43,15 +43,15 @@ GLOBAL - CHANGE HERE
 BACKBONE = 'resnet18' # from architecture_trial_resnet
 wandb.init(project='external_parameter_decoderusebatchnorm')
 config = wandb.config
-config.project_description = 'true'
-model_name = 'external_parameter_decoderusebatchnorm_true'
+config.project_description = 'false'
+model_name = 'external_parameter_decoderusebatchnorm_false'
 augment = False
 
-learning_rate = 10e-4
+learning_rate = 10e-4 # from external_parameter_learningrate
 loss = sm.losses.JaccardLoss()  # from external_parameter_loss
-optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)  # from external_parameter_optimizer, external_parameter_learningrate
+optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)  # from external_parameter_optimizer
 decoder_block_type = 'upsampling' # from external_parameter_decoderblocktype
-decoder_use_batchnorm = True
+decoder_use_batchnorm = False
 
 
 '''

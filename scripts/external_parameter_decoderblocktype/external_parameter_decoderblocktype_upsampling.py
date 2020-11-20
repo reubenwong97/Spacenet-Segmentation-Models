@@ -41,17 +41,16 @@ GLOBAL - CHANGE HERE
 ''' 
 
 BACKBONE = 'resnet18' # from architecture_trial_resnet
-wandb.init(project='external_parameter_decoderusebatchnorm')
+wandb.init(project='external_parameter_decoderblocktype')
 config = wandb.config
-config.project_description = 'false'
-model_name = 'external_parameter_decoderusebatchnorm_false'
+config.project_description = 'upsampling'
+model_name = 'external_parameter_decoderblocktype_upsampling'
 augment = False
 
-learning_rate = 10e-4
+learning_rate = 10e-4 # from external_parameter_learningrate
 loss = sm.losses.JaccardLoss()  # from external_parameter_loss
-optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)  # from external_parameter_optimizer, external_parameter_learningrate
-decoder_block_type = 'upsampling' # from external_parameter_decoderblocktype
-decoder_use_batchnorm = False
+optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)  # from external_parameter_optimizer
+decoder_block_type = 'upsampling'
 
 
 '''
@@ -69,7 +68,7 @@ print("tf.data.Dataset for train/val/test read")
 '''
 define the model - make sure to set model name
 '''
-model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3), decoder_block_type=decoder_block_type, decoder_use_batchnorm=decoder_use_batchnorm)
+model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3), decoder_block_type=decoder_block_type)
 model.compile(
     optimizer=optimizer,
     loss=loss,

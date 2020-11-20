@@ -1,14 +1,14 @@
 import numpy as np
 import os
 
-fnames = next(os.walk('.'))[2]
+fnames = next(os.walk('./histories'))[2]
 fnames = [x for x in fnames if x[-4:] == '.npy']
 
 best_model = ['', 0, 0]
 
 for fname in fnames:
-    if "decode" in fname:
-        history = np.load(fname, allow_pickle=True)
+    if "norm" in fname:
+        history = np.load('./histories/'+fname, allow_pickle=True)
         history = history.item()
         
         index_min = np.argmin(history['val_loss'])
