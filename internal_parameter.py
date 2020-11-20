@@ -40,18 +40,14 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet18' # from architecture_trial_resnet
+
 wandb.init(project='internal_parameter_')
 config = wandb.config
 config.project_description = ''
 model_name = 'internal_parameter_'
 augment = False
 
-learning_rate = 10e-4 # from external_parameter_learningrate
-loss = sm.losses.JaccardLoss()  # from external_parameter_loss
-optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)  # from external_parameter_optimizer
-decoder_block_type = 'upsampling' # from external_parameter_decoderblocktype
-decoder_use_batchnorm = True # from external_parameter_decoderusebatchnorm
+
 
 
 '''
@@ -69,10 +65,10 @@ print("tf.data.Dataset for train/val/test read")
 '''
 define the model - make sure to set model name
 '''
-model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3), decoder_block_type=decoder_block_type, decoder_use_batchnorm=decoder_use_batchnorm)
+model = sm.Unet('resnet18', encoder_weights='imagenet', input_shape=(None, None, 3), decoder_block_type='upsampling', decoder_use_batchnorm=True)
 model.compile(
-    optimizer=optimizer,
-    loss=loss,
+    optimizer=tf.keras.optimizers.Adam(learning_rate=10e-4),
+    loss=sm.losses.JaccardLoss(),
     metrics=[sm.metrics.IOUScore()],
 )
 
