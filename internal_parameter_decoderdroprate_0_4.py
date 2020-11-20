@@ -13,7 +13,6 @@ from keras.callbacks import ModelCheckpoint
 import os
 os.environ['SM_FRAMEWORK'] = 'tf.keras'
 SM_FRAMEWORK = os.getenv('SM_FRAMEWORK')
-# import segmentation_models as sm
 import segmentation_models_dev as sm
 sm.set_framework(SM_FRAMEWORK)
 
@@ -41,13 +40,13 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-wandb.init(project='testing_model_dev')
+wandb.init(project='internal_parameter_decoderdroprate')
 config = wandb.config
-config.project_description = 'trial_decoderdroprate'
-model_name = 'testing_model_dev_trial_decoderdroprate'
+config.project_description = '0_4'
+model_name = 'internal_parameter_decoderdroprate_0_4'
 augment = False
 
-decoder_drop_rate = 0.5
+decoder_drop_rate = 0.4
 
 
 '''

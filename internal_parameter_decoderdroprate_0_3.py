@@ -13,7 +13,6 @@ from keras.callbacks import ModelCheckpoint
 import os
 os.environ['SM_FRAMEWORK'] = 'tf.keras'
 SM_FRAMEWORK = os.getenv('SM_FRAMEWORK')
-# import segmentation_models as sm
 import segmentation_models_dev as sm
 sm.set_framework(SM_FRAMEWORK)
 
@@ -41,13 +40,13 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-
-wandb.init(project='testing_model_dev')
+wandb.init(project='internal_parameter_decoderdroprate')
 config = wandb.config
-config.project_description = 'trial_original'
-model_name = 'testing_model_dev_trial_original'
+config.project_description = '0_3'
+model_name = 'internal_parameter_decoderdroprate_0_3'
 augment = False
 
+decoder_drop_rate = 0.3
 
 
 '''
@@ -65,7 +64,7 @@ print("tf.data.Dataset for train/val/test read")
 '''
 define the model - make sure to set model name
 '''
-model = sm.Unet('resnet18', encoder_weights='imagenet', input_shape=(None, None, 3), decoder_block_type='upsampling', decoder_use_batchnorm=True)
+model = sm.Unet('resnet18', encoder_weights='imagenet', input_shape=(None, None, 3), decoder_block_type='upsampling', decoder_use_batchnorm=True, decoder_drop_rate=decoder_drop_rate)
 model.compile(
     optimizer=tf.keras.optimizers.Adam(learning_rate=10e-4),
     loss=sm.losses.JaccardLoss(),
