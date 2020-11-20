@@ -41,13 +41,13 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-
 wandb.init(project='testing_model_dev')
 config = wandb.config
 config.project_description = 'trial_decoderdroprate'
 model_name = 'testing_model_dev_trial_decoderdroprate'
 augment = False
 
+decoder_drop_rate = 0.5
 
 
 '''
@@ -65,7 +65,7 @@ print("tf.data.Dataset for train/val/test read")
 '''
 define the model - make sure to set model name
 '''
-model = sm.Unet('resnet18', encoder_weights='imagenet', input_shape=(None, None, 3), decoder_block_type='upsampling', decoder_use_batchnorm=True, decoder_drop_rate=0.5)
+model = sm.Unet('resnet18', encoder_weights='imagenet', input_shape=(None, None, 3), decoder_block_type='upsampling', decoder_use_batchnorm=True, decoder_drop_rate=decoder_drop_rate)
 model.compile(
     optimizer=tf.keras.optimizers.Adam(learning_rate=10e-4),
     loss=sm.losses.JaccardLoss(),
