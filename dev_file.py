@@ -41,18 +41,10 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet18' # from architecture_trial_resnet
-# wandb.init(project='external_parameter_decoderusebatchnorm')
-# config = wandb.config
-# config.project_description = 'true'
+BACKBONE = 'resnet18'
+# wandb.init(project='architecture_trial_resnet18_datagen')
 model_name = 'dev_file'
 augment = False
-
-learning_rate = 10e-4
-loss = sm.losses.JaccardLoss()  # from external_parameter_loss
-optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)  # from external_parameter_optimizer, external_parameter_learningrate
-decoder_block_type = 'upsampling' # from external_parameter_decoderblocktype
-decoder_use_batchnorm = True
 
 
 '''
@@ -70,10 +62,10 @@ print("tf.data.Dataset for train/val/test read")
 '''
 define the model - make sure to set model name
 '''
-model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3), decoder_block_type=decoder_block_type, decoder_use_batchnorm=decoder_use_batchnorm)
+model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3))
 model.compile(
-    optimizer=optimizer,
-    loss=loss,
+    optimizer='adam',
+    loss=sm.losses.BinaryFocalLoss(alpha=0.75, gamma=0.25),
     metrics=[sm.metrics.IOUScore()],
 )
 
@@ -86,7 +78,7 @@ CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5
 history = model.fit(
    train_data,
 #    epochs=100,
-   epochs=1,
+   epochs=2,
    validation_data=val_data,
    steps_per_epoch=1,
    validation_steps=1,

@@ -7,7 +7,7 @@ fnames = [x for x in fnames if x[-4:] == '.npy']
 best_model = ['', 0, 0]
 
 for fname in fnames:
-    if "decode" in fname:
+    if "dev_file" in fname:
         history = np.load(fname, allow_pickle=True)
         history = history.item()
         
