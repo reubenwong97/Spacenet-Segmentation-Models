@@ -80,12 +80,6 @@ model = sm.Unet(backbone, encoder_weights='imagenet', input_shape=(None, None, 3
     decoder_use_batchnorm=decoder_use_batchnorm, decoder_use_groupnorm=decoder_use_groupnorm, decoder_groupnorm_groups=decoder_groupnorm_groups,
     encoder_activation=encoder_activation
 )
-model.compile(
-    optimizer=tf.keras.optimizers.Adam(learning_rate=10e-4),
-    loss=sm.losses.JaccardLoss(),
-    metrics=[sm.metrics.IOUScore()],
-)
-
 
 '''
 load best weights from checkpoints. We will freeze all the weights and replace the top layer with a CRF layer
@@ -94,6 +88,11 @@ model.load_weights(str(PATH_CHECKPOINTS / weights_file))
 print(model.summary())
 model = slap_crf_rnn_layer(model)
 
+model.compile(
+    optimizer=tf.keras.optimizers.Adam(learning_rate=10e-4),
+    loss=sm.losses.JaccardLoss(),
+    metrics=[sm.metrics.IOUScore()],
+)
 
 
 '''
