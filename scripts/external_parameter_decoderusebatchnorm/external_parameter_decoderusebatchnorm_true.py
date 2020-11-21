@@ -13,7 +13,7 @@ from keras.callbacks import ModelCheckpoint
 import os
 os.environ['SM_FRAMEWORK'] = 'tf.keras'
 SM_FRAMEWORK = os.getenv('SM_FRAMEWORK')
-import segmentation_models as sm
+import segmentation_models_dev as sm
 sm.set_framework(SM_FRAMEWORK)
 
 import wandb
