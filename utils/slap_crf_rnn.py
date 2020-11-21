@@ -3,7 +3,7 @@ import tensorflow as tf
 import tensorflow.keras as keras
 import utils.helper as helper
 
-def slap_crf_rnn_layer(model, image_dims=(224, 224), num_classes=2, theta_alpha=160., theta_beta=3.,
+def slap_crf_rnn_layer(model, image_dims=(224, 224), num_classes=1, theta_alpha=160., theta_beta=3.,
                         theta_gamma=3., num_iterations=10, name='crfrnn'):
     # freeze entire model before attaching layer
     helper.freeze_model(model)
