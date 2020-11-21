@@ -1,4 +1,5 @@
-from .crf_rnn import crfrnn_layer
+from utils.crf_rnn.crfrnn_layer import CrfRnnLayer
+from .crf_rnn import crfrnn_layer.CrfRnnLayer as CrfRnnLayer
 import tensorflow as tf
 import tensorflow.keras as keras
 import utils.helper as helper
@@ -10,7 +11,7 @@ def slap_crf_rnn_layer(model, image_dims=(224, 224), num_classes=2, theta_alpha=
     input_ = model.input
     x = model.output
 
-    output = crfrnn_layer(image_dims=image_dims,
+    output = CrfRnnLayer(image_dims=image_dims,
         num_classes=num_classes,
         theta_alpha=theta_alpha,
         theta_beta=theta_beta,
