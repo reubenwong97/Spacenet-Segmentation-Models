@@ -59,7 +59,7 @@ def gamma(image):
 
 #Prob variables needed: rot90_prob,flipud_prob,fliplr_prob,color_aug(for brightness,
 #contrast,saturation), gauss_prob, gamma_prob
-def data_augment(image,mask,rot90_prob=0.2,flipud_prob=0.0,fliplr_prob=0.2,color_aug_prob=0.0,gauss_aug_prob=0.0,gamma_prob=0.0):
+def data_augment(image,mask,rot90_prob=0.2,flipud_prob=0.0,fliplr_prob=0.2,color_aug_prob=0.0,gauss_aug_prob=0.0,gamma_prob=0.2):
     mask = tf.expand_dims(mask, -1)
     if random.random() < rot90_prob:
         image,mask = rot90(image,mask)

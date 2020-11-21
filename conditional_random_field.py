@@ -45,14 +45,14 @@ wandb.init(project='conditional_random_field')
 config = wandb.config
 config.project_description = 'epoch_1'
 model_name = 'conditional_random_field_epoch_1'
-augment = 
+augment = False
 
 decoder_drop_rate = 0.0 # from internal_parameter_decoderdroprate
 decoder_use_batchnorm=False # from internal_parameter_decodernorm
 decoder_use_groupnorm = True # from internal_parameter_decodernorm
 decoder_groupnorm_groups = 8 # from internal_parameter_decodernorm
-backbone = 'resnet18'
-encoder_activation = 
+backbone = 'resnet18'  # from internal_parameter_activation
+encoder_activation = 'relu' # from internal_parameter_activation
 
 batch_size = 1  # CRF layer requires batch size 1
 epochs = 1 # just one pass over our many images
