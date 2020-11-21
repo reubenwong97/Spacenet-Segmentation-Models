@@ -54,6 +54,7 @@ decoder_groupnorm_groups = 8 # from internal_parameter_decodernorm
 backbone = 'resnet18'  # from internal_parameter_activation
 encoder_activation = 'relu' # from internal_parameter_activation
 
+weights_file= 'internal_parameter_decodernorm_groupnorm_8.hdf5'
 batch_size = 1  # CRF layer requires batch size 1
 epochs = 1 # just one pass over our many images
 steps_per_epoch = 13331  # equal to number of train samples
@@ -89,7 +90,7 @@ model.compile(
 '''
 load best weights from checkpoints. We will freeze all the weights and replace the top layer with a CRF layer
 '''
-model.load_weights(str(PATH_CHECKPOINTS / ('internal_parameters_activation_original_relu.hdf5')))
+model.load_weights(str(PATH_CHECKPOINTS / weights_file))
 model = slap_crf_rnn_layer(model)
 
 
