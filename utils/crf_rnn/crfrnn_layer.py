@@ -84,7 +84,8 @@ class CrfRnnLayer(Layer):
         super(CrfRnnLayer, self).build(input_shape)
 
     def call(self, inputs):
-        unaries = tf.transpose(inputs[0][0, :, :, :], perm=(2, 0, 1))
+        # unaries = tf.transpose(inputs[0][0, :, :, :], perm=(2, 0, 1))
+        unaries = tf.transpose(inputs[0][0, :, :], perm=(2, 0, 1))
         rgb = tf.transpose(inputs[1][0, :, :, :], perm=(2, 0, 1))
 
         c, h, w = self.num_classes, self.image_dims[0], self.image_dims[1]
