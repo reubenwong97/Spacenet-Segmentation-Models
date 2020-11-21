@@ -91,7 +91,9 @@ model.compile(
 load best weights from checkpoints. We will freeze all the weights and replace the top layer with a CRF layer
 '''
 model.load_weights(str(PATH_CHECKPOINTS / weights_file))
+print(model.summary())
 model = slap_crf_rnn_layer(model)
+
 
 
 '''
