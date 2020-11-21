@@ -1,4 +1,3 @@
-from utils.crf_rnn.crfrnn_layer import CrfRnnLayer
 from .crf_rnn.crfrnn_layer import CrfRnnLayer
 import tensorflow as tf
 import tensorflow.keras as keras
