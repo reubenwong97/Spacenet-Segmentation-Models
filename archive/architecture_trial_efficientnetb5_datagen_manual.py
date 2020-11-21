@@ -42,7 +42,7 @@ tf.config.experimental.set_memory_growth(gpu, True)
 load your data. this is a 5GB numpy array with all our data
 '''
 print("loading data")
-# PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS = helper.results_paths()
+# PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS, PATH_SAMPLE_FIGS = helper.results_paths()
 # X_train, Y_train, X_test, Y_test = helper.generate_train_test()
 print("X_train, Y_train, X_test, Y_test loaded")
 
@@ -56,7 +56,7 @@ print("preprocessing input")
 # X_train = preprocess_input(X_train)
 # X_test = preprocess_input(X_test)
 
-PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS = helper.results_paths()
+PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS, PATH_SAMPLE_FIGS = helper.results_paths()
 
 print('reading tf.data.Dataset')
 train_data = get_dataset('./data_project/train/SN_6.tfrecords', train=True)

@@ -55,7 +55,7 @@ optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate) # from externa
 '''
 loading data in the form of tf.data.dataset
 '''
-PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS = helper.results_paths()
+PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS, PATH_SAMPLE_FIGS = helper.results_paths()
 
 print('reading tf.data.Dataset')
 train_data = get_dataset('./data_project/train/SN_6.tfrecords', augment=augment)

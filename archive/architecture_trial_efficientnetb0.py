@@ -38,7 +38,7 @@ model_name = 'architecture_trial_efficientnetb0'
 load your data. this is a 5GB numpy array with all our data
 '''
 print("loading data")
-PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS = helper.results_paths()
+PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS, PATH_SAMPLE_FIGS = helper.results_paths()
 X_train, Y_train, X_test, Y_test = helper.generate_train_test()
 print("X_train, Y_train, X_test, Y_test loaded")
 

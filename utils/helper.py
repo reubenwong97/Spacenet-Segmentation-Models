@@ -7,6 +7,7 @@ import os
 import numpy as np
 from tqdm import tqdm
 import numpy as np
+import tensorflow as tf
 # from .datagen import DataGenerator
 import tensorflow.keras as keras
 import tensorflow_addons as tfa
@@ -49,8 +50,9 @@ def results_paths():
     PATH_FIGURES = PATH_RESULTS / 'figures'
     PATH_CHECKPOINTS = PATH_RESULTS / 'checkpoints'
     PATH_PREDICTIONS = PATH_RESULTS / 'predictions'
+    PATH_SAMPLE_FIGS = PATH_RESULTS / 'sample_figs'
 
-    return PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS
+    return PATH_RESULTS, PATH_HISTORIES, PATH_FIGURES, PATH_CHECKPOINTS, PATH_PREDICTIONS, PATH_SAMPLE_FIGS
 
 
 ''' 
@@ -88,8 +90,10 @@ def history_loader(model_name, history_save_path):
 used to plot the image, and the mask side by side, and also the prediction, if any
 index: int, img: np.ndarray, mask: np.ndarray, pred: np.ndarray
 '''
-def plot_img_mask(index, img, mask, pred=None):
-    if pred == None:
+def plot_img_mask(index, img, mask, pred=None, save_path=None, display=True):
+    img = tf.cast(img, tf.uint8)
+
+    if pred.any() == None:
         fig, (ax1, ax2) = plt.subplots(1,2, figsize=(14,7))
         ax1.imshow(img)
         ax1.set_title('image')
@@ -104,8 +108,12 @@ def plot_img_mask(index, img, mask, pred=None):
         ax3.imshow(pred)
         ax3.set_title('predicted mask')
     
-    print("Index: {}".format(index))
-    plt.show()
+    if save_path != None:
+        plt.savefig(save_path)
+
+    if display:
+        print("Index: {}".format(index))
+        plt.show()
 
 
 '''
