@@ -89,7 +89,7 @@ model.compile(
 '''
 load best weights from checkpoints. We will freeze all the weights and replace the top layer with a CRF layer
 '''
-model.load_weights(str(PATH_CHECKPOINTS / ('internal_parameter_decodernorm_groupnorm_8.hdf5')))
+model.load_weights(str(PATH_CHECKPOINTS / ('internal_parameters_activation_original_relu.hdf5')))
 model = slap_crf_rnn_layer(model)
 
 
