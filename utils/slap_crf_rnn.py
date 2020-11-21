@@ -16,7 +16,7 @@ def slap_crf_rnn_layer(model, image_dims=(224, 224), num_classes=1, theta_alpha=
         theta_beta=theta_beta,
         theta_gamma=theta_gamma,
         num_iterations=num_iterations,
-        name=name)(x)
+        name=name)(x, input_)
 
     model = keras.models.Model(input_, output)
 
