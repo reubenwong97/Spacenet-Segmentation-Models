@@ -47,8 +47,9 @@ model_name = 'internal_parameters_activation_original_relu_200epoch'
 augment = False
 
 decoder_drop_rate = 0.0
-decoder_use_batchnorm=True
-decoder_use_groupnorm = False
+decoder_use_batchnorm=False
+decoder_use_groupnorm = True
+decoder_groupnorm_groups = 8
 backbone = 'resnet18'
 encoder_activation = 'relu'
 
@@ -69,7 +70,7 @@ define the model - make sure to set model name
 '''
 model = sm.Unet(backbone, encoder_weights='imagenet', input_shape=(None, None, 3),
     decoder_block_type='upsampling', decoder_drop_rate=decoder_drop_rate,
-    decoder_use_batchnorm=decoder_use_batchnorm, decoder_use_groupnorm=decoder_use_groupnorm,
+    decoder_use_batchnorm=decoder_use_batchnorm, decoder_use_groupnorm=decoder_use_groupnorm, decoder_groupnorm_groups=decoder_groupnorm_groups,
     encoder_activation=encoder_activation
 )
 model.compile(
