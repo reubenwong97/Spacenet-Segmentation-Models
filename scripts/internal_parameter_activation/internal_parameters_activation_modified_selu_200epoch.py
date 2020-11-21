@@ -40,16 +40,18 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-wandb.init(project='internal_parameter_decodernorm')
+wandb.init(project='internal_parameters_activation')
 config = wandb.config
-config.project_description = 'groupnorm_8'
-model_name = 'internal_parameter_decodernorm_groupnorm_8'
+config.project_description = 'modified_selu_200epoch'
+model_name = 'internal_parameters_activation_modified_selu_200epoch'
 augment = False
 
 decoder_drop_rate = 0.0 # from internal_parameter_decoderdroprate
-decoder_use_batchnorm=False
-decoder_use_groupnorm = True
-decoder_groupnorm_groups = 8
+decoder_use_batchnorm=False # from internal_parameter_decodernorm
+decoder_use_groupnorm = True # from internal_parameter_decodernorm
+decoder_groupnorm_groups = 8 # from internal_parameter_decodernorm
+backbone = 'resnet18_modified'
+encoder_activation = 'selu'
 
 
 '''
@@ -67,9 +69,10 @@ print("tf.data.Dataset for train/val/test read")
 '''
 define the model - make sure to set model name
 '''
-model = sm.Unet('resnet18', encoder_weights='imagenet', input_shape=(None, None, 3),
+model = sm.Unet(backbone, encoder_weights='imagenet', input_shape=(None, None, 3),
     decoder_block_type='upsampling', decoder_drop_rate=decoder_drop_rate,
-    decoder_use_batchnorm=decoder_use_batchnorm, decoder_use_groupnorm=decoder_use_groupnorm, decoder_groupnorm_groups=decoder_groupnorm_groups
+    decoder_use_batchnorm=decoder_use_batchnorm, decoder_use_groupnorm=decoder_use_groupnorm, decoder_groupnorm_groups=decoder_groupnorm_groups,
+    encoder_activation=encoder_activation
 )
 model.compile(
     optimizer=tf.keras.optimizers.Adam(learning_rate=10e-4),
@@ -85,7 +88,7 @@ CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5
 
 history = model.fit(
    train_data,
-   epochs=100,
+   epochs=200,
    validation_data=val_data,
    steps_per_epoch=105,
    validation_steps=45,

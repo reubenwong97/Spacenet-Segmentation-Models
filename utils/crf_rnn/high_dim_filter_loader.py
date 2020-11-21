@@ -22,11 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+print('__file__ is', __file__)
+
 import os
 import tensorflow as tf
 from tensorflow.python.framework import ops
 custom_module = tf.load_op_library(os.path.join(os.path.dirname(__file__), 'cpp', 'high_dim_filter.so'))
 
+print(__file__)
 
 @ops.RegisterGradient('HighDimFilter')
 def _high_dim_filter_grad(op, grad):

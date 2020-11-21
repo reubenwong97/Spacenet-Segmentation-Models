@@ -42,16 +42,16 @@ GLOBAL - CHANGE HERE
 
 wandb.init(project='internal_parameters_activation')
 config = wandb.config
-config.project_description = 'modified_selu_200epoch'
-model_name = 'internal_parameters_activation_modified_selu_200epoch'
+config.project_description = 'modified_sigmoid'
+model_name = 'internal_parameters_activation_modified_sigmoid'
 augment = False
 
-decoder_drop_rate = 0.0
-decoder_use_batchnorm=False
-decoder_use_groupnorm = True
-decoder_groupnorm_groups = 8
+decoder_drop_rate = 0.0 # from internal_parameter_decoderdroprate
+decoder_use_batchnorm=False # from internal_parameter_decodernorm
+decoder_use_groupnorm = True # from internal_parameter_decodernorm
+decoder_groupnorm_groups = 8 # from internal_parameter_decodernorm
 backbone = 'resnet18_modified'
-encoder_activation = 'selu'
+encoder_activation = 'sigmoid'
 
 
 '''
@@ -88,7 +88,7 @@ CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5
 
 history = model.fit(
    train_data,
-   epochs=200,
+   epochs=100,
    validation_data=val_data,
    steps_per_epoch=105,
    validation_steps=45,

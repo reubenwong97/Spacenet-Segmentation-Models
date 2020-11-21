@@ -46,7 +46,7 @@ config.project_description = 'batchnorm'
 model_name = 'internal_parameter_decodernorm_batchnorm'
 augment = False
 
-decoder_drop_rate = 0.0
+decoder_drop_rate = 0.0 # from internal_parameter_decoderdroprate
 decoder_use_batchnorm=True
 decoder_use_groupnorm = False
 

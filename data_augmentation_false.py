@@ -40,19 +40,18 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-wandb.init(project='internal_parameters_activation')
+wandb.init(project='data_augmentation')
 config = wandb.config
-config.project_description = 'modified_tanh'
-model_name = 'internal_parameters_activation_modified_tanh'
+config.project_description = 'false'
+model_name = 'data_augmentation_false'
 augment = False
 
-decoder_drop_rate = 0.0
-decoder_use_batchnorm=False
-decoder_use_groupnorm = True
-decoder_groupnorm_groups = 8
-backbone = 'resnet18_modified'
-encoder_activation = 'tanh'
-
+decoder_drop_rate = 0.0 # from internal_parameter_decoderdroprate
+decoder_use_batchnorm=False # from internal_parameter_decodernorm
+decoder_use_groupnorm = True # from internal_parameter_decodernorm
+decoder_groupnorm_groups = 8 # from internal_parameter_decodernorm
+backbone = 'resnet18'
+encoder_activation = 
 
 '''
 loading data in the form of tf.data.dataset

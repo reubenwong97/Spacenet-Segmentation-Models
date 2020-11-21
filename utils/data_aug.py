@@ -59,24 +59,23 @@ def gamma(image):
 
 #Prob variables needed: rot90_prob,flipud_prob,fliplr_prob,color_aug(for brightness,
 #contrast,saturation), gauss_prob, gamma_prob
-def data_augment(image,mask,rot90_prob=0.4,flipud_prob=0.3,fliplr_prob=0.5,color_aug_prob=0.3,gauss_aug_prob=0.5,gamma_prob=0.2):
-    if random.random() < 0.4:
-        mask = tf.expand_dims(mask, -1)
-        if random.random() < rot90_prob:
-            image,mask = rot90(image,mask)
-        if random.random() < fliplr_prob:
-            image,mask = flip_lr(image,mask)
-        if random.random() < flipud_prob:
-            image,mask = flip_ud(image,mask)
-        if random.random() < color_aug_prob:
-            image = saturation(image)
-        if random.random() < color_aug_prob:
-            image = brightness(image)
-        if random.random() < gauss_aug_prob:
-            image = gauss_noise(image)
-        if random.random() < gamma_prob:
-            image = gamma(image)
-        mask = tf.squeeze(mask,-1)
+def data_augment(image,mask,rot90_prob=0.2,flipud_prob=0.0,fliplr_prob=0.2,color_aug_prob=0.0,gauss_aug_prob=0.0,gamma_prob=0.0):
+    mask = tf.expand_dims(mask, -1)
+    if random.random() < rot90_prob:
+        image,mask = rot90(image,mask)
+    if random.random() < fliplr_prob:
+        image,mask = flip_lr(image,mask)
+    if random.random() < flipud_prob:
+        image,mask = flip_ud(image,mask)
+    if random.random() < color_aug_prob:
+        image = saturation(image)
+    if random.random() < color_aug_prob:
+        image = brightness(image)
+    if random.random() < gauss_aug_prob:
+        image = gauss_noise(image)
+    if random.random() < gamma_prob:
+        image = gamma(image)
+    mask = tf.squeeze(mask,-1)
     return image,mask
 
 # training_data = datagen.get_dataset('../data_project/train/SN_6.tfrecords')

@@ -46,7 +46,7 @@ config.project_description = 'groupnorm_2'
 model_name = 'internal_parameter_decodernorm_groupnorm_2'
 augment = False
 
-decoder_drop_rate = 0.0
+decoder_drop_rate = 0.0 # from internal_parameter_decoderdroprate
 decoder_use_batchnorm=False
 decoder_use_groupnorm = True
 decoder_groupnorm_groups = 2

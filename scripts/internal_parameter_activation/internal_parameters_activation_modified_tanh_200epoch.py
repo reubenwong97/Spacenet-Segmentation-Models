@@ -46,10 +46,10 @@ config.project_description = 'modified_tanh_200epoch'
 model_name = 'internal_parameters_activation_modified_tanh_200epoch'
 augment = False
 
-decoder_drop_rate = 0.0
-decoder_use_batchnorm=False
-decoder_use_groupnorm = True
-decoder_groupnorm_groups = 8
+decoder_drop_rate = 0.0 # from internal_parameter_decoderdroprate
+decoder_use_batchnorm=False # from internal_parameter_decodernorm
+decoder_use_groupnorm = True # from internal_parameter_decodernorm
+decoder_groupnorm_groups = 8 # from internal_parameter_decodernorm
 backbone = 'resnet18_modified'
 encoder_activation = 'tanh'
 
