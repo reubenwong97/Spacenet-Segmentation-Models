@@ -1,26 +1,5 @@
 # README
 ## Logging
-### Params Handler
-For easy tracking, parameters are all handled with the `Params` class defined in `logging.py`. It allows us to load parameters neatly from a json file. For example, we can do this:
-```json
-{
-    "params_file": "default.json",
-    "log_file": "train.log",
-
-    "lr": 0.0003,
-    "seed": 1,
-    "batch_size": 64,
-    "num_steps": 365,
-    "hidden_size": [32, 64,256],
-    "cuda": true
-}
-```
-We can then access the params throughout the code in a dict-like manner like this:
-```python
-params = Params(path_to_params)
-# get learning rate
-lr = params.lr
-```
 ### Weights and Biases (Doper)
 I will create an api key and we will then log to the same project. Weights and biases provides better graphics, inspection of gradients, as well as hyperparameter tuning, with the ability to perform automatic sweeps through the hyperparameter space. 
 First, install wandb and attach api key:
