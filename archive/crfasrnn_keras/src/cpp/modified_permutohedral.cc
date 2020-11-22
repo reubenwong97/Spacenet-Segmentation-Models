@@ -2,8 +2,10 @@
    This file contains a modified version of the "permutohedral.cpp" code
    available at http://graphics.stanford.edu/projects/drf/. Copyright notice of
    the original file is included below:
+
     Copyright (c) 2013, Philipp Krähenbühl
     All rights reserved.
+
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
         * Redistributions of source code must retain the above copyright
@@ -14,6 +16,7 @@
         * Neither the name of the Stanford University nor the
         names of its contributors may be used to endorse or promote products
         derived from this software without specific prior written permission.
+
     THIS SOFTWARE IS PROVIDED BY Philipp Krähenbühl ''AS IS'' AND ANY
     EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -27,7 +30,7 @@
 */
 
 //#include "stdafx.h"
-#include "include/modified_permutohedral.h"
+#include "modified_permutohedral.h"
 
 #ifdef __SSE__
 // SSE Permutoheral lattice
@@ -132,10 +135,10 @@ public:
 /***          ModifiedPermutohedral Lattice           ***/
 /************************************************/
 
-//ModifiedPermutohedral::ModifiedPermutohedral():N_( 0 ), M_( 0 ), d_( 0 ) {}
-
+ModifiedPermutohedral::ModifiedPermutohedral():N_( 0 ), M_( 0 ), d_( 0 ) {
+}
 #ifdef SSE_PERMUTOHEDRAL
-void ModifiedPermutohedral::init_cpu(const float* features, int num_dimensions, int num_points)
+void ModifiedPermutohedral::init(const float* features, int num_dimensions, int num_points)
 {
 	// Compute the lattice coordinates for each feature [there is going to be a lot of magic here
 	N_ = num_points;
@@ -318,7 +321,7 @@ void ModifiedPermutohedral::init_cpu(const float* features, int num_dimensions, 
 	delete[] n2;
 }
 #else
-void ModifiedPermutohedral::init_cpu(const float* features, int num_dimensions, int num_points)
+void ModifiedPermutohedral::init (const float* features, int num_dimensions, int num_points)
 {
 	// Compute the lattice coordinates for each feature [there is going to be a lot of magic here
 	N_ = num_points;
@@ -619,12 +622,12 @@ void ModifiedPermutohedral::sseCompute(Tensor& out_tensor, const Tensor& in_tens
 #else
 void ModifiedPermutohedral::sseCompute(Tensor& out, const Tensor& in, int value_size, bool reverse, bool add) const
 {
-	seqCompute_cpu( out, in, value_size, reverse, add);
+	seqCompute( out, in, value_size, reverse, add);
 }
 #endif
 
 
-void ModifiedPermutohedral::compute_cpu(Tensor& out, const Tensor& in, int value_size, bool reverse, bool add) const
+void ModifiedPermutohedral::compute(Tensor& out, const Tensor& in, int value_size, bool reverse, bool add) const
 {
 	if (value_size <= 2)
 		seqCompute(out, in, value_size, reverse, add);

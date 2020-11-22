@@ -24,9 +24,20 @@ SOFTWARE.
 
 import numpy as np
 import tensorflow as tf
-from tf.keras.layers import Layer
+# from keras.engine.topology import Layer
+from tensorflow.keras.layers import Layer
+
 from . import high_dim_filter_loader
+
 custom_module = high_dim_filter_loader.custom_module
+
+
+def _diagonal_initializer(shape, *ignored, **ignored_too):
+    return np.eye(shape[0], shape[1], dtype=np.float32)
+
+
+def _potts_model_initializer(shape, *ignored, **ignored_too):
+    return -1 * _diagonal_initializer(shape)
 
 
 class CrfRnnLayer(Layer):
@@ -55,19 +66,19 @@ class CrfRnnLayer(Layer):
         # Weights of the spatial kernel
         self.spatial_ker_weights = self.add_weight(name='spatial_ker_weights',
                                                    shape=(self.num_classes, self.num_classes),
-                                                   initializer='uniform',
+                                                   initializer=_diagonal_initializer,
                                                    trainable=True)
 
         # Weights of the bilateral kernel
         self.bilateral_ker_weights = self.add_weight(name='bilateral_ker_weights',
                                                      shape=(self.num_classes, self.num_classes),
-                                                     initializer='uniform',
+                                                     initializer=_diagonal_initializer,
                                                      trainable=True)
 
         # Compatibility matrix
         self.compatibility_matrix = self.add_weight(name='compatibility_matrix',
                                                     shape=(self.num_classes, self.num_classes),
-                                                    initializer='uniform',
+                                                    initializer=_potts_model_initializer,
                                                     trainable=True)
 
         super(CrfRnnLayer, self).build(input_shape)

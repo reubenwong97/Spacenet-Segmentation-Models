@@ -1,10 +1,11 @@
 # CRF-RNN for Semantic Image Segmentation - Keras/Tensorflow version
 ![sample](sample.png)
 
-<b>Live demo:</b> &nbsp;&nbsp;&nbsp;&nbsp; [http://crfasrnn.torr.vision](http://crfasrnn.torr.vision) <br/>
-<b>Caffe version:</b> [http://github.com/torrvision/crfasrnn](http://github.com/torrvision/crfasrnn)<br/>
+<b>Live demo:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [http://crfasrnn.torr.vision](http://crfasrnn.torr.vision) <br/>
+<b>PyTorch version:</b> &nbsp;&nbsp;&nbsp;[http://github.com/sadeepj/crfasrnn_pytorch](http://github.com/sadeepj/crfasrnn_pytorch)<br/>
+<b>Caffe version:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [http://github.com/torrvision/crfasrnn](http://github.com/torrvision/crfasrnn)<br/>
 
-This repository contains Keras/Tensorflow code for the "CRF-RNN" semantic image segmentation method, published in the ICCV 2015 paper [Conditional Random Fields as Recurrent Neural Networks](http://www.robots.ox.ac.uk/~szheng/papers/CRFasRNN.pdf). This paper was initially described in an [arXiv tech report](http://arxiv.org/abs/1502.03240). The [online demo](http://crfasrnn.torr.vision) of this project won the Best Demo Prize at ICCV 2015. Original Caffe-based code of this project can be found [here](https://github.com/torrvision/crfasrnn). Results produced with this Keras/Tensorflow code are almost identical to that with the Caffe-based version.
+This repository contains Keras/Tensorflow code for the "CRF-RNN" semantic image segmentation method, published in the ICCV 2015 paper [Conditional Random Fields as Recurrent Neural Networks](http://www.robots.ox.ac.uk/~szheng/papers/CRFasRNN.pdf). The [online demo](http://crfasrnn.torr.vision) of this project won the Best Demo Prize at ICCV 2015. Results of this Keras/Tensorflow code are identical to that of the Caffe and PyTorch based versions above.
 
 If you use this code/model for your research, please cite the following paper:
 ```
@@ -45,8 +46,6 @@ You should not see any errors while importing `tensorflow` and `keras` above.
 
 ### Step 3: Build CRF-RNN custom op C++ code
 
-**Note**: Edit the makefile to select whether to run on GPU/CPU. 
-
 Run `make` inside the `crfasrnn_keras/src/cpp` directory:
 ```
 $ cd crfasrnn_keras/src/cpp
@@ -70,6 +69,6 @@ $ python run_demo.py
 If all goes well, you will see the segmentation results in a file named "labels.png".
 
 
-## Limitations of the Current Version
-1. Currently, some operations in the CRF-RNN layer can only run on the CPU. An all-GPU version will be released soon.
-2. Current implementation of CrfRnnLayer only supports batch_size == 1
+## Notes
+1. Current implementation of the CrfRnnLayer only supports batch_size == 1
+2. An experimental GPU version of the CrfRnnLayer that has been tested on CUDA 9 and Tensorflow 1.7 only, is available under the `gpu_support` branch. This code was contributed by [thwjoy](https://github.com/thwjoy).

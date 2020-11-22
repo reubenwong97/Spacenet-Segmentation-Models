@@ -1,5 +1,2 @@
 *.pyc
 src/cpp/high_dim_filter.so
-*.h5
-*.png
-*.o
