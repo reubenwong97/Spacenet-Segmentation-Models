@@ -20,8 +20,8 @@ SM_FRAMEWORK = os.getenv('SM_FRAMEWORK')
 import segmentation_models_dev as sm
 sm.set_framework(SM_FRAMEWORK)
 
-import wandb
-from wandb.keras import WandbCallback
+# import wandb
+# from wandb.keras import WandbCallback
 
 from utils.datagen import get_dataset
 
@@ -44,9 +44,9 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-wandb.init(project='internal_parameter_decodernorm')
-config = wandb.config
-config.project_description = 'groupnorm_8'
+# wandb.init(project='internal_parameter_decodernorm')
+# config = wandb.config
+# config.project_description = 'groupnorm_8'
 model_name = 'internal_parameter_decodernorm_groupnorm_8'
 augment = False
 
@@ -95,7 +95,7 @@ history = model.fit(
    validation_steps=45,
    callbacks=[
        TQDMCallback(),
-       WandbCallback(log_weights=True, save_weights_only=True),
+       # WandbCallback(log_weights=True, save_weights_only=True),
        CheckpointCallback
        ]
 )
@@ -110,14 +110,6 @@ predict on the test set. load best weights from checkpoints
 '''
 model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 
-# predictions = model.predict(
-#     X_test,
-#     verbose=1,
-#     callbacks=[
-#         TQDMCallback()
-#     ]
-# ) 
-
 test_metrics = model.evaluate(test_data, steps=3)
 
 test_metrics_dict = {
@@ -125,5 +117,4 @@ test_metrics_dict = {
     'test_iou_score': test_metrics[1]
 }
 
-# np.save(PATH_PREDICTIONS / model_name, predictions)
 np.save(PATH_PREDICTIONS/str(model_name + "_prediction_score"), test_metrics_dict)

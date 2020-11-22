@@ -16,8 +16,8 @@ SM_FRAMEWORK = os.getenv('SM_FRAMEWORK')
 import segmentation_models_dev as sm
 sm.set_framework(SM_FRAMEWORK)
 
-import wandb
-from wandb.keras import WandbCallback
+# import wandb
+# from wandb.keras import WandbCallback
 
 from utils.datagen import get_dataset
 
