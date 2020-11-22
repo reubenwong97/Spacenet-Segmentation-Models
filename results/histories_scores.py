@@ -7,8 +7,7 @@ fnames = [x for x in fnames if x[-4:] == '.npy']
 best_model = ['', 0, 0]
 
 for fname in fnames:
-    # if "augmentation" in fname:
-    if '200' not in fname:
+    if "activation" in fname:
         history = np.load('./histories/'+fname, allow_pickle=True)
         history = history.item()
         
