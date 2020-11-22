@@ -48,7 +48,7 @@ BACKBONE = 'resnet18'
 # wandb.init(project='architecture_trial')
 # config = wandb.config
 # config.project_description = 'resnet18'
-model_name = 'path_test'
+model_name = 'z_test'
 augment = False
 
 
@@ -82,7 +82,7 @@ CheckpointCallback = ModelCheckpoint(str(PATH_CHECKPOINTS / (model_name + '.hdf5
 
 history = model.fit(
    train_data,
-   epochs=100,
+   epochs=3,
    validation_data=val_data,
    steps_per_epoch=105,
    validation_steps=45,
