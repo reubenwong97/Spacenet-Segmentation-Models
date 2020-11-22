@@ -24,11 +24,11 @@ SOFTWARE.
 
 import os
 import tensorflow as tf
-from tensorflow.python.framework import ops
+# from tensorflow.python.framework import ops
 custom_module = tf.load_op_library(os.path.join(os.path.dirname(__file__), 'cpp', 'high_dim_filter.so'))
 
 
-@ops.RegisterGradient('HighDimFilter')
+@tf.RegisterGradient('HighDimFilter')
 def _high_dim_filter_grad(op, grad):
     """ Gradients for the HighDimFilter op. We only need to calculate the gradients
     w.r.t. the first input (unaries) as we never need to backprop errors to the
