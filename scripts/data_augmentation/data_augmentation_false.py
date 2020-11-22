@@ -2,6 +2,11 @@
 '''
 imports and global
 '''
+import os
+import sys
+d = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(d)
+print(sys.path)
 import utils.helper as helper
 import numpy as np
 
@@ -10,7 +15,6 @@ from tensorflow import keras
 from keras_tqdm import TQDMCallback
 from keras.callbacks import ModelCheckpoint
 
-import os
 os.environ['SM_FRAMEWORK'] = 'tf.keras'
 SM_FRAMEWORK = os.getenv('SM_FRAMEWORK')
 import segmentation_models_dev as sm

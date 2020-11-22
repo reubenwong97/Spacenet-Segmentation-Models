@@ -2,6 +2,10 @@
 '''
 imports and global
 '''
+from os.path import dirname, abspath
+import sys
+d = dirname(dirname(dirname((__file__))))
+sys.path.append(d)
 import utils.helper as helper
 import numpy as np
 
