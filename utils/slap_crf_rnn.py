@@ -1,4 +1,4 @@
-from .crfasrnn_keras.src.crfrnn_model import CrfRnnLayer
+from .crfasrnn_keras.src.crfrnn_layer import CrfRnnLayer
 import tensorflow as tf
 
 def slap_crf_layer(original_model, 
