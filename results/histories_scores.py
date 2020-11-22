@@ -7,8 +7,7 @@ fnames = [x for x in fnames if x[-4:] == '.npy']
 best_model = ['', 0, 0]
 
 for fname in fnames:
-    # if "activation" in fname:
-    if "resnet50" not in fname:
+    if "activation" in fname:
         history = np.load('./histories/'+fname, allow_pickle=True)
         history = history.item()
         
@@ -16,7 +15,7 @@ for fname in fnames:
         min_val_loss = history['val_loss'][index_min]
         max_val_iou_score = history['val_iou_score'][index_min]
 
-        print(f'{fname}: \nMin val_loss: {min_val_loss}, Max val_iou_score:{max_val_iou_score}\n')
+        print(f'{fname}: \nMin val_loss: {min_val_loss}, Max val_iou_score: {max_val_iou_score}\n')
 
         if max_val_iou_score > best_model[2]:
             best_model[0] = fname
@@ -24,3 +23,4 @@ for fname in fnames:
             best_model[2] = max_val_iou_score
 
 print(f"best model: {best_model}")
+
