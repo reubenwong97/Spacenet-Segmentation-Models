@@ -37,14 +37,14 @@ if gpus:
 ''' 
 ---------------------------------------
 GLOBAL - CHANGE HERE
+input the best model to use based on test data, because we are visualizing the test data
+run results/predictions_scores.py to find out what the best model is for test data
+
+--> data_augmentation_false is the best 
 --------------------------------------- 
 ''' 
-
-# wandb.init(project='data_augmentation')
-# config = wandb.config
-# config.project_description = 'false'
-model_name = 'data_augmentation_false'
-augment = False
+model_name = 'data_augmentation_false' # from data_augmentation
+augment = False # from data_augmentation
 
 decoder_drop_rate = 0.0 # from internal_parameter_decoderdroprate
 decoder_use_batchnorm=False # from internal_parameter_decodernorm
@@ -52,6 +52,7 @@ decoder_use_groupnorm = True # from internal_parameter_decodernorm
 decoder_groupnorm_groups = 8 # from internal_parameter_decodernorm
 backbone = 'resnet18'  # from internal_parameter_activation
 encoder_activation = 'relu' # from internal_parameter_activation
+
 
 '''
 loading data in the form of tf.data.dataset
@@ -82,12 +83,11 @@ model.compile(
 
 
 '''
-predict on the test set. load best weights from checkpoints
+predict on a subset of the test set. load best weights from checkpoints
 '''
 model.load_weights(str(PATH_CHECKPOINTS / (model_name + '.hdf5')))
 
 image_batch, mask_batch = next(iter(test_data))
-
 
 predictions = model.predict(
     image_batch,
@@ -98,9 +98,10 @@ predictions = model.predict(
 ) 
 
 
-# Plot some predictions 
-# for index in range(len(predictions)):
-for index in range(128):
+'''
+plot and save the plots 
+'''
+for index in range(len(predictions)):
     save_path = PATH_SAMPLE_FIGS/ ('sample_'+str(index)) 
     helper.plot_img_mask(index, image_batch[index], mask_batch[index], pred=predictions[index], save_path=save_path, display=False)
 

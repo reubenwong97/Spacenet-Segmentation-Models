@@ -7,7 +7,8 @@ fnames = [x for x in fnames if x[-4:] == '.npy']
 best_model = ['', 0, 0]
 
 for fname in fnames:
-    if "activation" in fname:
+    # if "activation" in fname:
+    if "resnet50" not in fname:
         score = np.load('./predictions/'+fname, allow_pickle=True)
         score = score.item()
         print(f'{fname}: \n{score}\n')
