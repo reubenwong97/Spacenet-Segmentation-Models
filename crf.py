@@ -17,6 +17,7 @@ import segmentation_models_dev as sm
 sm.set_framework(SM_FRAMEWORK)
 
 import wandb
+wandb.init(project='crfrnn_test')
 from wandb.keras import WandbCallback
 
 from utils.datagen import get_dataset
