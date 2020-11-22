@@ -2,6 +2,10 @@
 '''
 imports and global
 '''
+from os.path import dirname, abspath
+import sys
+d = dirname(dirname(dirname((__file__))))
+sys.path.append(d)
 import utils.helper as helper
 import numpy as np
 
@@ -32,19 +36,19 @@ if gpus:
     except RuntimeError as e:
         # Memory growth must be set before GPUs have been initialized
         print(e)
-        
 
+        
 ''' 
 ---------------------------------------
 GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet50'
+BACKBONE = 'resnet18'
 wandb.init(project='architecture_trial')
 config = wandb.config
-config.project_description = 'resnet50'
-model_name = 'architecture_trial_resnet50'
+config.project_description = 'resnet18'
+model_name = 'architecture_trial_resnet18'
 augment = False
 
 

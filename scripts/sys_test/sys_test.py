@@ -2,6 +2,11 @@
 '''
 imports and global
 '''
+import os
+import sys
+d = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(d)
+print(sys.path)
 import utils.helper as helper
 import numpy as np
 
@@ -10,7 +15,6 @@ from tensorflow import keras
 from keras_tqdm import TQDMCallback
 from keras.callbacks import ModelCheckpoint
 
-import os
 os.environ['SM_FRAMEWORK'] = 'tf.keras'
 SM_FRAMEWORK = os.getenv('SM_FRAMEWORK')
 import segmentation_models_dev as sm
@@ -32,21 +36,26 @@ if gpus:
     except RuntimeError as e:
         # Memory growth must be set before GPUs have been initialized
         print(e)
-        
 
+        
 ''' 
 ---------------------------------------
 GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet34'
-wandb.init(project='architecture_trial')
+wandb.init(project='sys_test')
 config = wandb.config
-config.project_description = 'resnet34'
-model_name = 'architecture_trial_resnet34'
+config.project_description = 'sys_test'
+model_name = 'sys_test'
 augment = False
 
+decoder_drop_rate = 0.0 # from internal_parameter_decoderdroprate
+decoder_use_batchnorm=False # from internal_parameter_decodernorm
+decoder_use_groupnorm = True # from internal_parameter_decodernorm
+decoder_groupnorm_groups = 8 # from internal_parameter_decodernorm
+backbone = 'resnet18'  # from internal_parameter_activation
+encoder_activation = 'relu' # from internal_parameter_activation
 
 '''
 loading data in the form of tf.data.dataset
@@ -63,10 +72,14 @@ print("tf.data.Dataset for train/val/test read")
 '''
 define the model - make sure to set model name
 '''
-model = sm.Unet(BACKBONE, encoder_weights='imagenet', input_shape=(None, None, 3))
+model = sm.Unet(backbone, encoder_weights='imagenet', input_shape=(None, None, 3),
+    decoder_block_type='upsampling', decoder_drop_rate=decoder_drop_rate,
+    decoder_use_batchnorm=decoder_use_batchnorm, decoder_use_groupnorm=decoder_use_groupnorm, decoder_groupnorm_groups=decoder_groupnorm_groups,
+    encoder_activation=encoder_activation
+)
 model.compile(
-    optimizer='adam',
-    loss=sm.losses.BinaryFocalLoss(alpha=0.75, gamma=0.25),
+    optimizer=tf.keras.optimizers.Adam(learning_rate=10e-4),
+    loss=sm.losses.JaccardLoss(),
     metrics=[sm.metrics.IOUScore()],
 )
 

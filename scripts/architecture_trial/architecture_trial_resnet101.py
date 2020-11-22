@@ -2,6 +2,10 @@
 '''
 imports and global
 '''
+from os.path import dirname, abspath
+import sys
+d = dirname(dirname(dirname((__file__))))
+sys.path.append(d)
 import utils.helper as helper
 import numpy as np
 
@@ -40,11 +44,11 @@ GLOBAL - CHANGE HERE
 --------------------------------------- 
 ''' 
 
-BACKBONE = 'resnet18'
+BACKBONE = 'resnet101'
 wandb.init(project='architecture_trial')
 config = wandb.config
-config.project_description = 'resnet18'
-model_name = 'architecture_trial_resnet18'
+config.project_description = 'resnet101'
+model_name = 'architecture_trial_resnet101'
 augment = False
 
 
