@@ -31,7 +31,7 @@ wandb login
 Next, intialise it in the training scripts:
 ```python
 import wandb
-wandb.init(project="car-make-model")
+wandb.init(project="spacenet6")
 ```
 Then, we need to declare the hyperparameters we want to use:
 ```python
