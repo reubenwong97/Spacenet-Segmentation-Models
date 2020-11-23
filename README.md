@@ -13,7 +13,7 @@ Please clone the repository and create a new environment with the required cloud
 #### Installing Customised Repository
 Next, we need to install our customised repositories from source. Credits go to [qubvel](https://github.com/qubvel) for the base source code. We made changes to these repositories and thus, you will need to install ours.
 
-** IMPORTANT **: Please clone and install this repository outside of the spacenet_6 folder to avoid python import issues. Also, please be sure to install `classification_models_dev` first as it is a dependency for `segmentation_models_dev`. 
+**IMPORTANT**: Please clone and install this repository outside of the spacenet_6 folder to avoid python import issues. Also, please be sure to install `classification_models_dev` first as it is a dependency for `segmentation_models_dev`. 
 ```bash
 # tf2.1 conda environment should be active when installing
 git clone https://github.com/reubenwong97/models_dev.git 
@@ -31,7 +31,7 @@ To run scripts on SCSE’s GPU server, please run from the project root director
 ```bash
 sbatch job.sh scripts/architecture_trial/architecture_trial_resnet18.py 
 ```
-
+```bash
 For reference, refer to the directory structure below: 
 ├───archive
 ├───data_generation
@@ -61,6 +61,7 @@ For reference, refer to the directory structure below:
 │   ├───internal_parameter_decoderdroprate
 │   └───internal_parameter_decodernorm
 ├───utils
+```
 
 ### SpaceNet 6
 SpaceNet 6 Challenge dataset - just download train set (download through AWS CLI)
