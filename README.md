@@ -33,34 +33,50 @@ sbatch job.sh scripts/architecture_trial/architecture_trial_resnet18.py
 ```
 For reference, refer to the directory structure below: 
 ```bash
-├───archive
-├───data_generation
-├───data_project
-│   ├───test # SN_6_test.tfrecords in this folder
-│   │   ├───img
-│   │   └───mask
-│   └───train # SN_6.tfrecords and SN_6_val.tfrecords in this folder
-│       ├───img
-│       └───mask
-├───results
-│   ├───checkpoints
-│   ├───figures
-│   ├───histories
-│   ├───predictions
-│   ├───sample_figs
-│   └───summary_figures
-├───scripts
-│   ├───architecture_trial
-│   ├───data_augmentation
-│   ├───external_paramater_optimizer
-│   ├───external_parameter_decoderblocktype
-│   ├───external_parameter_decoderusebatchnorm
-│   ├───external_parameter_learningrate
-│   ├───external_parameter_loss
-│   ├───internal_parameter_activation
-│   ├───internal_parameter_decoderdroprate
-│   └───internal_parameter_decodernorm
-├───utils
+|Project Root
+|───models_dev # custom repo to install
+│   ├───classification_models_dev
+│   │   ├───classification_models_dev
+│   │   │   ├───models
+│   │   ├───tests
+│   │   │   └───data
+│   └───segmentation_models_dev
+│       ├───docs
+│       ├───images
+│       ├───segmentation_models_dev
+│       │   ├───backbones
+│       │   ├───base
+│       │   ├───models
+│       ├───tests
+└───spacenet_6 # spacenet_6 root directory
+    ├───archive
+    ├───data_generation
+    ├───data_project
+    │   ├───test # SN_6_test.tfrecords in this folder
+    │   │   ├───img
+    │   │   └───mask
+    │   └───train # SN_6.tfrecords and SN_6_val.tfrecords in this folder
+    │       ├───img
+    │       └───mask
+    ├───results
+    │   ├───checkpoints
+    │   ├───figures
+    │   ├───histories
+    │   ├───predictions
+    │   ├───sample_figs
+    │   └───summary_figures
+    ├───scripts
+    │   ├───architecture_trial
+    │   ├───data_augmentation
+    │   ├───external_paramater_optimizer
+    │   ├───external_parameter_decoderblocktype
+    │   ├───external_parameter_decoderusebatchnorm
+    │   ├───external_parameter_learningrate
+    │   ├───external_parameter_loss
+    │   ├───internal_parameter_activation
+    │   ├───internal_parameter_decoderdroprate
+    │   └───internal_parameter_decodernorm
+    ├───utils
 ```
 
 ### SpaceNet 6
