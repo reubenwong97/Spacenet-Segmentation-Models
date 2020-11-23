@@ -102,12 +102,12 @@ predictions = model.predict(
 ) 
 
 
-# '''
-# plot and save the plots 
-# '''
-# for index in range(len(predictions)):
-#     save_path = PATH_SAMPLE_FIGS/ ('sample_'+str(index)) 
-#     helper.plot_img_mask(index, image_batch[index], mask_batch[index], pred=predictions[index], save_path=save_path, display=False)
+'''
+plot and save the plots 
+'''
+for index in range(len(predictions)):
+    save_path = PATH_SAMPLE_FIGS/ ('sample_'+str(index)) 
+    helper.plot_img_mask(index, image_batch[index], mask_batch[index], pred=predictions[index], save_path=save_path, display=False)
 
 
 
