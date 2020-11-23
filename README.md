@@ -78,4 +78,4 @@ For reference, refer to the directory structure below:
     │   └───internal_parameter_decodernorm
     ├───utils
 ```
-Additionally, for your convenience, model checkpoints have also been provided [here](https://entuedu-my.sharepoint.com/:u:/g/personal/wong1109_e_ntu_edu_sg/EamrtcT2pPdJod408PUU_1ABpotKJO-XOr7INrL-uAEXQA?e=YeP8Yt) for ease of testing.
+Additionally, for your convenience, model checkpoints have also been provided [here](https://entuedu-my.sharepoint.com/:u:/g/personal/wong1109_e_ntu_edu_sg/EamrtcT2pPdJod408PUU_1ABpotKJO-XOr7INrL-uAEXQA?e=YeP8Yt) for ease of testing. Place the checkpoint files in `spacenet_6/results/checkpoints` to use them.
