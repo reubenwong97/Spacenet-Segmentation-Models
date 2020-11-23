@@ -31,15 +31,15 @@ To run scripts on SCSE’s GPU server, please run from the project root director
 ```bash
 sbatch job.sh scripts/architecture_trial/architecture_trial_resnet18.py 
 ```
-```bash
 For reference, refer to the directory structure below: 
+```bash
 ├───archive
 ├───data_generation
 ├───data_project
-│   ├───test (SN_6_test.tfrecords in this folder)
+│   ├───test # SN_6_test.tfrecords in this folder
 │   │   ├───img
 │   │   └───mask
-│   └───train (SN_6.tfrecords and SN_6_val.tfrecords in this folder)
+│   └───train # SN_6.tfrecords and SN_6_val.tfrecords in this folder
 │       ├───img
 │       └───mask
 ├───results
